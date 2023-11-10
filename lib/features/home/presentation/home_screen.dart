@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:collocation_dictionary/features/home/presentation/widgets/search_widgets.dart';
@@ -38,54 +40,58 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           ),
-          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            gapH64,
-            SearchWidget(searchField: searchField),
-            Center(
-              child: SizedBox(
-                  height: 700,
-                  width: MediaQuery.of(context).size.width - 32,
-                  child: GridView.builder(
-                    itemCount: foundWords.length,
-                    itemBuilder: (context, index) {
-                      return (foundWords.isEmpty || typedText == '')
-                          ? const SizedBox()
-                          : Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Container(
-                                // color: Colors.white,
-                                decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(16)),
-                                ),
-                                child: Center(
-                                  child: Column(
-                                    children: [
-                                      const Icon(Icons.key, size: 50),
-                                      gapH8,
-                                      Text(
-                                        foundWords[index].word,
-                                        key: Key('text_$index'),
-                                        style: const TextStyle(
-                                            fontSize: 21, color: Colors.blue),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+          Column(
+            children: [
+              gapH32,
+              SearchWidget(searchField: searchField),
+              SizedBox(
+                width: MediaQuery.of(context).size.width - 32,
+                height: MediaQuery.of(context).size.height - 90,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final crossAxisSpacing = constraints.maxWidth * 0.05;
+                    final taskWidth =
+                        (constraints.maxWidth - crossAxisSpacing) / 2.0;
+                    const aspectRatio = 0.82;
+                    final taskHeight = taskWidth / aspectRatio;
+                    // Use max(x, 0.1) to prevent layout error when keyword is visible in modal page
+                    final mainAxisSpacing = max(
+                        (constraints.maxHeight - taskHeight * 3) / 2.0, 0.1);
+                    final tasksLength = foundWords.length;
+                    return GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: crossAxisSpacing,
+                        mainAxisSpacing: mainAxisSpacing,
+                        childAspectRatio: aspectRatio,
+                      ),
+                      itemBuilder: (context, index) {
+                        final word = foundWords[index];
+                        return Card(
+                          shape: const CircleBorder(),
+                          child: Center(
+                              child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.key,
+                                  color: Colors.grey, size: 77),
+                              Text(
+                                word.word,
+                                style: const TextStyle(
+                                    fontSize: 21, color: Colors.blue),
                               ),
-                            );
-                    },
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 32,
-                      crossAxisSpacing: 32,
-                      crossAxisCount: 2,
-                      childAspectRatio: 2,
-                    ),
-                  )),
-            )
-          ]),
+                            ],
+                          )),
+                        );
+                      },
+                      itemCount: tasksLength,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     ));

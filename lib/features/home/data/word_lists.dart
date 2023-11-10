@@ -28,4 +28,28 @@ List<Word> wordList = [
       meaning: 'กุญแจ',
       wordType: WordType.noun,
       collocations: ['insert', 'press', 'save', 'copy']),
+  Word(
+      word: 'monitor',
+      sound: 'มอนิเตอร์',
+      meaning: 'จอภาพ',
+      wordType: WordType.noun,
+      collocations: ['turn on', 'turn off', 'look at', 'watch', 'adjust']),
+  Word(
+      word: 'keyboard',
+      sound: 'คี้ บ็อร์ด',
+      meaning: 'คียบอร์ด',
+      wordType: WordType.noun,
+      collocations: ['type', 'fix', 'buy', 'sell']),
+  Word(
+      word: 'key',
+      sound: 'คี้',
+      meaning: 'กุญแจ',
+      wordType: WordType.noun,
+      collocations: ['insert', 'press', 'save', 'copy']),
+  Word(
+      word: 'monitor',
+      sound: 'มอนิเตอร์',
+      meaning: 'จอภาพ',
+      wordType: WordType.noun,
+      collocations: ['turn on', 'turn off', 'look at', 'watch', 'adjust']),
 ];
