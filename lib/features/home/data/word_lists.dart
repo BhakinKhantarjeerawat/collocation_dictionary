@@ -22,4 +22,10 @@ List<Word> wordList = [
       meaning: 'คียบอร์ด',
       wordType: WordType.noun,
       collocations: ['type', 'fix', 'buy', 'sell']),
+  Word(
+      word: 'key',
+      sound: 'คี้',
+      meaning: 'กุญแจ',
+      wordType: WordType.noun,
+      collocations: ['insert', 'press', 'save', 'copy']),
 ];
