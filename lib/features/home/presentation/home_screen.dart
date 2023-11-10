@@ -1,6 +1,6 @@
-import 'package:collocation_dictionary/common_widgets/my_text_field.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
+import 'package:collocation_dictionary/features/home/presentation/widgets/search_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,55 +19,52 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController searchField = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final typedText = ref.watch(searchedWordProvider);
+    final foundWords = WordRepository().searchWord(word: typedText);
     return Scaffold(
         appBar: AppBar(title: const Text('Home screen')),
         body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(children: [
-            gapH16,
-            SearchWidget(searchField: searchField),
-            gapH16,
-            const WordListWidget()
-          ]),
-        ));
-  }
-}
-
-class SearchWidget extends ConsumerStatefulWidget {
-  const SearchWidget({
-    super.key,
-    required this.searchField,
-  });
-
-  final TextEditingController searchField;
-
-  @override
-  ConsumerState<SearchWidget> createState() => _SearchWidgetState();
-}
-
-class _SearchWidgetState extends ConsumerState<SearchWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(child: Image.asset('assets/images/cat.png', fit: BoxFit.cover)),
-        Positioned(
-          bottom: 200,
-          left: 115,
-          child: SizedBox(
-            width: 120,
-            child: TextField(
-              controller: widget.searchField,
-              onChanged: (value) => ref
-                  .read(searchedWordProvider.notifier)
-                  .state = widget.searchField.text,
-              decoration: const InputDecoration(
-                  filled: true, fillColor: Color(0xffac947b)),
+          // padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Image.asset(
+                  'assets/images/water_fall.png',
+                  fit: BoxFit.fitHeight,
+                ),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      gapH16,
+                      SearchWidget(searchField: searchField),
+                      gapH16,
+                      // const WordListWidget()
+                      SizedBox(
+                        width: 300,
+                        height: 300,
+                        child: GridView.builder(
+                          itemCount: foundWords.length,
+                          itemBuilder: (context, index) => Card(
+                              color: Colors.blueAccent,
+                              child: Row(children: [
+                                gapW8,
+                                const Icon(Icons.key),
+                                gapW8,
+                                Text(foundWords[index].word)
+                              ])),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 2,
+                          ),
+                        ),
+                      )
+                    ]),
+              ],
             ),
           ),
-        ),
-      ],
-    );
+        ));
   }
 }
 
@@ -88,26 +85,64 @@ class _WordListWidgetState extends ConsumerState<WordListWidget> {
 
     return (foundWords.isEmpty || typedText == '')
         ? const SizedBox()
-        : Expanded(
-            child: ListView.builder(
-              itemCount: foundWords.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {},
-                  child: Column(
-                    children: [
-                      Text(foundWords[index].word),
-                      // Text(foundWords[index].sound),
-                      // Text(foundWords[index].meaning),
-                      // Text(foundWords[index].collocations),
-                      // ExpansionTile(
-                      //     backgroundColor: Colors.white,
-                      //     title: Text(foundWords[index].word),
-                      //     children: const [Text('asdf')]),
-                    ],
-                  ),
-                );
-              },
+        : Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: 180,
+              height: MediaQuery.of(context).size.height - 160,
+              child: ListView.builder(
+                itemCount: foundWords.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: Card(
+                      child: Row(
+                        children: [
+                          gapW16,
+                          const Icon(
+                            Icons.computer,
+                            color: Colors.blueAccent,
+                            size: 50,
+                          ),
+                          gapW16,
+                          Text(foundWords[index].word),
+                          // Text(foundWords[index].sound),
+                          // Text(foundWords[index].meaning),
+                          // Text(foundWords[index].collocations),
+                          // ExpansionTile(
+                          //     backgroundColor: Colors.white,
+                          //     title: Text(foundWords[index].word),
+                          //     children: const [Text('asdf')]),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+  }
+}
+
+class ItemTile extends ConsumerWidget {
+  final int itemNo;
+
+  const ItemTile(this.itemNo, {super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // final Color color = Colors.primaries[itemNo % Colors.primaries.length];
+    final typedText = ref.watch(searchedWordProvider);
+    final foundWords = WordRepository().searchWord(word: typedText);
+    return (foundWords.isEmpty || typedText == '')
+        ? const SizedBox()
+        : Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              child: Text(
+                'Product $itemNo',
+                key: Key('text_$itemNo'),
+              ),
             ),
           );
   }
