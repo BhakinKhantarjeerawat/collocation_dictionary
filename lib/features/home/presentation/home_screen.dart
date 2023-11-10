@@ -48,35 +48,24 @@ class SearchWidget extends ConsumerStatefulWidget {
 class _SearchWidgetState extends ConsumerState<SearchWidget> {
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Stack(
       children: [
-        // Expanded(
-        //   child: MyTextField(
-        //     controller: widget.searchField,
-        //     maxLines: 1,
-        //     maxLength: 50,
-        //     textInputAction: TextInputAction.next,
-        //     hintText: 'ค้นหา',
-        //   ),
-        // ),
-        Expanded(
-          child: TextField(
-            controller: widget.searchField,
-            onChanged: (value) => ref
-                .read(searchedWordProvider.notifier)
-                .state = widget.searchField.text,
+        Center(child: Image.asset('assets/images/cat.png', fit: BoxFit.cover)),
+        Positioned(
+          bottom: 200,
+          left: 115,
+          child: SizedBox(
+            width: 120,
+            child: TextField(
+              controller: widget.searchField,
+              onChanged: (value) => ref
+                  .read(searchedWordProvider.notifier)
+                  .state = widget.searchField.text,
+              decoration: const InputDecoration(
+                  filled: true, fillColor: Color(0xffac947b)),
+            ),
           ),
         ),
-        const SizedBox(width: 4),
-        SizedBox(
-          height: 50,
-          child: OutlinedButton(
-              child: const Icon(Icons.search),
-              onPressed: () {
-                ref.read(searchedWordProvider.notifier).state =
-                    widget.searchField.text;
-              }),
-        )
       ],
     );
   }
