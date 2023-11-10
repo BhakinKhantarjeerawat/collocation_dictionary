@@ -18,14 +18,36 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 16),
-      width: 180,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TextField(
         controller: widget.searchField,
         onChanged: (value) => ref.read(searchedWordProvider.notifier).state =
             widget.searchField.text,
-        decoration:
-            InputDecoration(filled: true, fillColor: Colors.grey.shade200),
+        decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            // focusedBorder: InputBorder.none,
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  width: 3, color: Colors.greenAccent), //<-- SEE HERE
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  width: 3, color: Colors.greenAccent), //<-- SEE HERE
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  width: 3, color: Colors.greenAccent), //<-- SEE HERE
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            suffixIcon: IconButton(
+                onPressed: () {
+                  widget.searchField.clear();
+                  ref.read(searchedWordProvider.notifier).state = '';
+                },
+                icon: const Icon(Icons.delete, color: Colors.grey))),
       ),
     );
   }
