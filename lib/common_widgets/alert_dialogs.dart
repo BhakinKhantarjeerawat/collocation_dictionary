@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 const kDialogDefaultKey = Key('dialog-default-key');
 
-/// Generic function to show a platform-aware Material or Cupertino dialog
+
 Future<bool?> showAlertDialog({
   required BuildContext context,
   required String title,
@@ -52,7 +52,54 @@ Future<bool?> showAlertDialog({
   );
 }
 
-/// Generic function to show a platform-aware Material or Cupertino error dialog
+Future<bool?> showMyAlertDialog({
+  required BuildContext context,
+  required Widget widget,
+  String? content,
+  String? cancelActionText,
+  String defaultActionText = 'OK',
+}) async {
+  return showDialog(
+    context: context,
+    // * Only make the dialog dismissible if there is a cancel button
+    barrierDismissible: cancelActionText != null,
+    // * AlertDialog.adaptive was added in Flutter 3.13
+    builder: (context) => AlertDialog.adaptive(
+      title: widget,
+      content: content != null ? Text(content) : null,
+      // * Use [TextButton] or [CupertinoDialogAction] depending on the platform
+      actions: kIsWeb || !Platform.isIOS
+          ? <Widget>[
+              if (cancelActionText != null)
+                TextButton(
+                  child: Text(cancelActionText),
+                  onPressed: () => Navigator.of(context).pop(false),
+                ),
+              TextButton(
+                key: kDialogDefaultKey,
+                child: Text(defaultActionText),
+                onPressed: () => Navigator.of(context).pop(true),
+              ),
+            ]
+          : <Widget>[
+              if (cancelActionText != null)
+                CupertinoDialogAction(
+                  child: Text(cancelActionText),
+                  onPressed: () => Navigator.of(context).pop(false),
+                ),
+              CupertinoDialogAction(
+                key: kDialogDefaultKey,
+                child: Text(defaultActionText),
+                onPressed: () => Navigator.of(context).pop(true),
+              ),
+            ],
+    ),
+  );
+}
+
+
+
+
 Future<void> showExceptionAlertDialog({
   required BuildContext context,
   required String title,
