@@ -1,6 +1,6 @@
 
-import 'package:collocation_dictionary/common_widgets/responsive_center.dart';
 import 'package:collocation_dictionary/constants/breakpoints.dart';
+import 'package:collocation_dictionary/deletable/responsive_center.dart';
 import 'package:flutter/material.dart';
 
 

@@ -6,4 +6,5 @@ todos:
 - AI Image
 - drapDrop
 - turn page
+- zen mode
 

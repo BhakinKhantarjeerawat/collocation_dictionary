@@ -1,0 +1,1 @@
+const articleList = ['none','a', 'an', 'the'];
