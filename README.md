@@ -7,4 +7,6 @@ todos:
 - drapDrop
 - turn page
 - zen mode
+- note in each word, might be default
+- default plurality
 

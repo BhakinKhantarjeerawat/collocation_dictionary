@@ -1,10 +1,14 @@
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
-  
-  runApp(const ProviderScope(child: MainApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations(
+          [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft])
+      .then((_) => runApp(const ProviderScope(child: MainApp())));
 }
 
 class MainApp extends StatefulWidget {

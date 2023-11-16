@@ -2,17 +2,22 @@ import 'package:collocation_dictionary/common_widgets/my_buttons.dart';
 import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
 import 'package:collocation_dictionary/common_widgets/show_text_widget.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/data/before_noun_list.dart';
+import 'package:collocation_dictionary/features/home/data/article_list.dart';
+import 'package:collocation_dictionary/features/home/data/adjective_list.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final frontWordProvider1 = StateProvider<String>((ref) {
+final verbProvider = StateProvider<String>((ref) {
   return '';
 });
 
-final frontWordProvider2 = StateProvider<String>((ref) {
+final articleProvider = StateProvider<String>((ref) {
+  return '';
+});
+
+final adjectiveProvider = StateProvider<String>((ref) {
   return '';
 });
 
@@ -34,10 +39,13 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
   Widget build(BuildContext context) {
     final typedText = ref.watch(searchedWordProvider);
     final foundWords = WordRepository().searchWords(word: typedText);
-    final frontWord1 = ref.watch(frontWordProvider1);
-    final frontWord2 = ref.watch(frontWordProvider2);
+    final verb = ref.watch(verbProvider);
+    final article = ref.watch(articleProvider);
+    final adjective = ref.watch(adjectiveProvider);
+
     final backWord = ref.watch(backWordProvider);
     return Scaffold(
+      appBar: AppBar(),
         body: Stack(
       children: [
         const MyFilledImage(imagePath: 'assets/images/stream.png'),
@@ -54,9 +62,57 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
                       size: 140, color: Colors.blueAccent),
                 ),
                 gapH16,
+                gapH16,
+                Row(
+                  children: [
+                    Container(
+                      height: 55,
+                      width: 120,
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16)),
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: Text(verb,
+                              style: const TextStyle(
+                                  fontSize: 18, color: Colors.blue))),
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 55,
+                        // width: MediaQuery.of(context).size.width - 32,
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                                '$article $adjective ${foundWords[widget.index].word}$backWord',
+                                style: const TextStyle(
+                                    fontSize: 18, color: Colors.blue))),
+                      ),
+                    ),
+                  ],
+                ),
+                gapH16,
+                Container(
+                  height: 55,
+                  width: MediaQuery.of(context).size.width - 16,
+                  margin: const EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16)),
+                  child: const Align(
+                      alignment: Alignment.center,
+                      child: Text('มองที่หน้าจอมอนิเตอร์',
+                          style: TextStyle(fontSize: 18, color: Colors.blue))),
+                ),
+                gapH16,
                 Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 2,
+                    height: MediaQuery.of(context).size.height / 3,
                     decoration: const BoxDecoration(
                       color: Colors.brown,
                       // borderRadius: BorderRadius.all(Radius.circular(24)),
@@ -69,91 +125,24 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
                           child: Column(children: [
                             gapH16,
                             Row(
-                              children: [
-                                // gapW8,
-                                // ShowTextWidget(text: frontWord1, width: 90),
-                                // gapW8,
-                                // ShowTextWidget(text: frontWord2, width: 20),
-                                // gapW8,
-                                // ShowTextWidget(
-                                //   text: foundWords[widget.index].word,
-                                //   width: 90,
-                                // ),
-                                // gapW8,
-                                // ShowTextWidget(text: backWord, width: 20),
-                                // gapW8,
-
-                                Container(
-                                  height: 55,
-                                  width: 120,
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(16)),
-                                  child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(frontWord1,
-                                          style: const TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.blue))),
-                                ),
-
-                                Expanded(
-                                  child: Container(
-                                    height: 55,
-                                    // width: MediaQuery.of(context).size.width - 32,
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 8),
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(16)),
-                                    child: Align(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                            '$frontWord2 ${foundWords[widget.index].word}$backWord',
-                                            style: const TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.blue))),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            gapH16,
-                            Container(
-                              height: 55,
-                              width: MediaQuery.of(context).size.width - 16,
-                              margin: const EdgeInsets.symmetric(horizontal: 8),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(16)),
-                              child: const Align(
-                                  alignment: Alignment.center,
-                                  child: Text('มองที่หน้าจอมอนิเตอร์',
-                                      style: TextStyle(
-                                          fontSize: 18, color: Colors.blue))),
-                            ),
-                            gapH16,
-                            InkWell(
-                              child: Chip(
-                                label: Text(
-                                  foundWords[widget.index].word,
-                                  style: const TextStyle(fontSize: 27),
-                                ),
-                              ),
-                            ),
-                            gapH16,
-                            Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  InkWell(
+                                    child: Chip(
+                                      label: Text(
+                                        foundWords[widget.index].word,
+                                        style: const TextStyle(fontSize: 27),
+                                      ),
+                                    ),
+                                  ),
+                                  gapW16,
                                   Chip(
                                     label: Text(
                                       foundWords[widget.index].sound,
                                       style: const TextStyle(fontSize: 21),
                                     ),
                                   ),
-                                  gapW32,
+                                  gapW16,
                                   Chip(
                                     label: Text(
                                       foundWords[widget.index].meaning,
@@ -176,11 +165,10 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
                                                   .collocations[index],
                                               onPressed: () {
                                                 ref
-                                                        .read(frontWordProvider1
-                                                            .notifier)
-                                                        .state =
-                                                    foundWords[widget.index]
-                                                        .collocations[index];
+                                                    .read(verbProvider.notifier)
+                                                    .state = foundWords[
+                                                        widget.index]
+                                                    .collocations[index];
                                               }),
                                         ],
                                       )),
@@ -189,18 +177,37 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
                               height: MediaQuery.of(context).size.height / 14,
                               child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: beforeNounList.length,
+                                  itemCount: articleList.length,
                                   itemBuilder: (context, index) => Row(
                                         children: [
                                           gapW8,
                                           MyButton21(
-                                              text: beforeNounList[index],
+                                              text: articleList[index],
                                               onPressed: () {
                                                 ref
-                                                        .read(frontWordProvider2
+                                                    .read(articleProvider
+                                                        .notifier)
+                                                    .state = articleList[index];
+                                              }),
+                                        ],
+                                      )),
+                            ),
+                            SizedBox(
+                              height: MediaQuery.of(context).size.height / 14,
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: adjectiveList.length,
+                                  itemBuilder: (context, index) => Row(
+                                        children: [
+                                          gapW8,
+                                          MyButton21(
+                                              text: adjectiveList[index],
+                                              onPressed: () {
+                                                ref
+                                                        .read(adjectiveProvider
                                                             .notifier)
                                                         .state =
-                                                    beforeNounList[index];
+                                                    adjectiveList[index];
                                               }),
                                         ],
                                       )),

@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/presentation/drag_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,31 +30,31 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
                   .read(searchedWordProvider.notifier)
                   .state = widget.searchField.text,
               decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  // focusedBorder: InputBorder.none,
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        width: 3, color: Colors.white), //<-- SEE HERE
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        width: 3, color: Colors.white), //<-- SEE HERE
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                        width: 3, color: Colors.white), //<-- SEE HERE
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  // suffixIcon: IconButton(
-                  //     onPressed: () {
-                  //       widget.searchField.clear();
-                  //       ref.read(searchedWordProvider.notifier).state = '';
-                  //     },
-                  //     icon: const Icon(Icons.delete, color: Colors.grey))
-                      ),
+                filled: true,
+                fillColor: Colors.white,
+                // focusedBorder: InputBorder.none,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 3, color: Colors.white), //<-- SEE HERE
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 3, color: Colors.white), //<-- SEE HERE
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                      width: 3, color: Colors.white), //<-- SEE HERE
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                // suffixIcon: IconButton(
+                //     onPressed: () {
+                //       widget.searchField.clear();
+                //       ref.read(searchedWordProvider.notifier).state = '';
+                //     },
+                //     icon: const Icon(Icons.delete, color: Colors.grey))
+              ),
             ),
           ),
           gapW16,
@@ -70,7 +71,12 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
           IconButton(
               icon: const Icon(Icons.search_outlined, color: Colors.white),
               iconSize: 55,
-              onPressed: () {}),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DragScreen()),
+                );
+              }),
         ],
       ),
     );
