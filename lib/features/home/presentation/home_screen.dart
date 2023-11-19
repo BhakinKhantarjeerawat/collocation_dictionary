@@ -1,14 +1,12 @@
 import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:collocation_dictionary/features/home/presentation/widgets/search_widgets.dart';
 import 'package:collocation_dictionary/features/home/presentation/word_details_screen.dart';
+import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-final searchedWordProvider = StateProvider<String>((ref) {
-  return '';
-});
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -20,7 +18,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final TextEditingController searchField = TextEditingController();
 
-   bool _visible = false;
+  bool _visible = false;
 
   @override
   void initState() {
@@ -69,12 +67,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           itemBuilder: (BuildContext ctx, index) {
                             return GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          WordDetailsScreen(index: index)),
-                                );
+                                myNavigate(context,
+                                    screen: WordDetailsScreen(index: index));
+
+                    
 
                                 // showMyAlertDialog(
                                 //     context: context,

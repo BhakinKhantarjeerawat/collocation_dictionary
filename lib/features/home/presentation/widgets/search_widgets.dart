@@ -1,6 +1,7 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/presentation/drag_screen.dart';
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+import 'package:collocation_dictionary/features/home/data/providers.dart';
+import 'package:collocation_dictionary/features/home/presentation/drag_screen2.dart';
+import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -48,12 +49,6 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
                       width: 3, color: Colors.white), //<-- SEE HERE
                   borderRadius: BorderRadius.circular(15.0),
                 ),
-                // suffixIcon: IconButton(
-                //     onPressed: () {
-                //       widget.searchField.clear();
-                //       ref.read(searchedWordProvider.notifier).state = '';
-                //     },
-                //     icon: const Icon(Icons.delete, color: Colors.grey))
               ),
             ),
           ),
@@ -72,10 +67,7 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
               icon: const Icon(Icons.search_outlined, color: Colors.white),
               iconSize: 55,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const DragScreen()),
-                );
+                myNavigate(context, screen: const DragScreen2());
               }),
         ],
       ),

@@ -1,11 +1,10 @@
 import 'package:collocation_dictionary/common_widgets/my_buttons.dart';
 import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
-import 'package:collocation_dictionary/common_widgets/show_text_widget.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/article_list.dart';
 import 'package:collocation_dictionary/features/home/data/adjective_list.dart';
+import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -45,7 +44,7 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
 
     final backWord = ref.watch(backWordProvider);
     return Scaffold(
-      appBar: AppBar(),
+        // appBar: AppBar(),
         body: Stack(
       children: [
         const MyFilledImage(imagePath: 'assets/images/stream.png'),
@@ -70,7 +69,7 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
                       width: 120,
                       margin: const EdgeInsets.symmetric(horizontal: 8),
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.brown.shade100,
                           borderRadius: BorderRadius.circular(16)),
                       child: Align(
                           alignment: Alignment.center,

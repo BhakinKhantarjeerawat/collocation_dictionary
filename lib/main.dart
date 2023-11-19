@@ -1,13 +1,17 @@
+import 'package:collocation_dictionary/constants/app_theme.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+import 'package:collocation_dictionary/features/home/presentation/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  FlutterTts flutterTts =  FlutterTts();
+await flutterTts.setLanguage("en-US");
   SystemChrome.setPreferredOrientations(
-          [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft])
+          [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
       .then((_) => runApp(const ProviderScope(child: MainApp())));
 }
 
@@ -20,8 +24,11 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: const IntroScreen(),
     );
   }
 }

@@ -1,189 +1,262 @@
-import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-class DragScreen extends StatefulWidget {
-  const DragScreen({Key? key}) : super(key: key);
-  @override
-  DragScreenState createState() => DragScreenState();
-}
+// class Puzzle extends StatefulWidget {
+//   const Puzzle({Key? key}) : super(key: key);
 
-class DragScreenState extends State<DragScreen> {
-  bool insideTarget = false;
-  String activeEmoji = '';
-  int count = 0;
+//   @override
+//   _PuzzleState createState() => _PuzzleState();
+// }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: AppBar(title: Text('Inside Target? $insideTarget')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Draggable<String>(
-              data: 'red',
-              feedback: SizedBox(
-                height: 220.0,
-                width: 120.0,
-                child: Center(
-                  child: Image.asset('assets/images/cat.png'),
-                ),
-              ),
-              child: SizedBox(
-                height: 120.0,
-                width: 120.0,
-                child: Center(
-                  child: Image.asset('assets/images/cat.png'),
-                ),
-              ),
-            ),
-            LongPressDraggable<String>(
-              data: 'blue',
-              feedback: SizedBox(
-                height: 220.0,
-                width: 120.0,
-                child: Center(
-                  child: Image.asset('assets/images/wood.png'),
-                ),
-              ),
-              child: SizedBox(
-                height: 120.0,
-                width: 120.0,
-                child: Center(
-                  child: Image.asset('assets/images/wood.png'),
-                ),
-              ),
-            ),
+// GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
-            DragTarget<String>(
-              builder: (
-                BuildContext context,
-                List<dynamic> accepted,
-                List<dynamic> rejected,
-              ) {
-                return const SizedBox(
-                  height: 300,
-                  width: 300,
-                  child: Center(
-                    child: Icon(Icons.place_rounded),
-                  ),
-                );
-              },
-              onWillAccept: (data) {
-                return data == 'red' || data == 'blue';
-              },
-              onAccept: (data) {
-                print(data);
-                setState(() {
-                  // showSnackBarGlobal(context, 'Dropped successfully!');
-                  // _isDropped = true;
-                });
-              },
-              onLeave: (data) {
-                debugPrint('mistaked');
-              },
-            ),
+// class _PuzzleState extends State<Puzzle> {
+//   bool _isBlueDropped = false;
+//   bool _isRedDropped = false;
+//   bool _isYelloDropped = false;
+//   bool _isGreenDropped = false;
+//   final String _blue = 'blue';
+//   final String _red = 'red';
+//   final String _yellow = 'yellow';
+//   final String _green = 'green';
 
-            // DragTarget(
+//   @override
+//   Widget build(BuildContext context) {
+//     return SafeArea(
+//       child: Scaffold(
+//           // backgroundColor: Colors.blueAccent,
+//           body: Container(
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//           children: [
+//             const SizedBox(
+//               width: 20,
+//             ),
+//             Center(
+//               child: SizedBox(
+//                 height: 314,
+//                 width: 315,
+//                 child: Stack(
+//                   children: [
+//                     Positioned(
+//                       top: 0,
+//                       left: 0,
+//                       child: DragTarget<String>(
+//                         builder: (
+//                           BuildContext context,
+//                           List<dynamic> accepted,
+//                           List<dynamic> rejected,
+//                         ) {
+//                           return SizedBox(
+//                             height: 160,
+//                             width: 200,
+//                             child: Image.asset(_isBlueDropped
+//                                 ? 'assets/images/bo.png'
+//                                 : 'assets/images/bt.png'),
+//                           );
+//                         },
+//                         onWillAccept: (data) {
+//                           return data == _blue;
+//                         },
+//                         onAccept: (data) {
+//                           setState(() {
+//                             _isBlueDropped = true;
+//                           });
+//                         },
+//                       ),
+//                     ),
+//                     Positioned(
+//                       top: 0,
+//                       right: 0,
+//                       child: DragTarget<String>(
+//                         builder: (
+//                           BuildContext context,
+//                           List<dynamic> accepted,
+//                           List<dynamic> rejected,
+//                         ) {
+//                           return SizedBox(
+//                             height: 200,
+//                             width: 160,
+//                             child: Image.asset(_isRedDropped
+//                                 ? 'assets/images/ro.png'
+//                                 : 'assets/images/rt.png'),
+//                           );
+//                         },
+//                         onWillAccept: (data) {
+//                           return data == _red;
+//                         },
+//                         onAccept: (data) {
+//                           setState(() {
+//                             _isRedDropped = true;
+//                           });
+//                         },
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 0,
+//                       left: 0,
+//                       child: DragTarget<String>(
+//                         builder: (
+//                           BuildContext context,
+//                           List<dynamic> accepted,
+//                           List<dynamic> rejected,
+//                         ) {
+//                           return SizedBox(
+//                             height: 200,
+//                             width: 160,
+//                             child: Image.asset(_isYelloDropped
+//                                 ? 'assets/images/yo.png'
+//                                 : 'assets/images/yt.png'),
+//                           );
+//                         },
+//                         onWillAccept: (data) {
+//                           return data == _yellow;
+//                         },
+//                         onAccept: (data) {
+//                           setState(() {
+//                             _isYelloDropped = true;
+//                           });
+//                         },
+//                       ),
+//                     ),
+//                     Positioned(
+//                       bottom: 0,
+//                       right: 0,
+//                       child: DragTarget<String>(
+//                         builder: (
+//                           BuildContext context,
+//                           List<dynamic> accepted,
+//                           List<dynamic> rejected,
+//                         ) {
+//                           return SizedBox(
+//                             height: 160,
+//                             width: 200,
+//                             child: Image.asset(_isGreenDropped
+//                                 ? 'assets/images/go.png'
+//                                 : 'assets/images/gt.png'),
+//                           );
+//                         },
+//                         onWillAccept: (data) {
+//                           return data == _green;
+//                         },
+//                         onAccept: (data) {
+//                           setState(() {
+//                             _isGreenDropped = true;
+//                           });
+//                         },
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             SizedBox(
+//               width: MediaQuery.of(context).size.width * 0.15,
+//             ),
+//             const Divider(
+//               thickness: 5,
+//               color: Colors.white,
+//             ),
+//             Expanded(
+//               child: SingleChildScrollView(
+//                 child: Column(
+//                   children: [
+//                     Visibility(
+//                       visible: !_isRedDropped,
+//                       child: Draggable<String>(
+//                         // Data is the value this Draggable stores.
+//                         data: _red,
+//                         feedback: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/ro.png'),
+//                           ),
+//                         ),
+//                         childWhenDragging: Container(),
+//                         child: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/ro.png'),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Visibility(
+//                       visible: !_isGreenDropped,
+//                       child: Draggable<String>(
+//                         // Data is the value this Draggable stores.
+//                         data: _green,
+//                         feedback: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/go.png'),
+//                           ),
+//                         ),
+//                         childWhenDragging: Container(),
+//                         child: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/go.png'),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Visibility(
+//                       visible: !_isBlueDropped,
+//                       child: Draggable<String>(
+//                         // Data is the value this Draggable stores.
+//                         data: _blue,
+//                         feedback: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/bo.png'),
+//                           ),
+//                         ),
+//                         childWhenDragging: Container(),
+//                         child: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/bo.png'),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                     Visibility(
+//                       visible: !_isYelloDropped,
+//                       child: Draggable<String>(
+//                         // Data is the value this Draggable stores.
+//                         data: _yellow,
+//                         feedback: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/yo.png'),
+//                           ),
+//                         ),
+//                         childWhenDragging: Container(),
+//                         child: SizedBox(
+//                           height: 165.0,
+//                           width: 165.0,
+//                           child: Center(
+//                             child: Image.asset('assets/images/yo.png'),
+//                           ),
+//                         ),
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       )),
+//     );
+//   }
 
-            //   builder: (BuildContext context, List<int> candidateData,
-            //       List<dynamic> rejectedData) {
-            //     debugPrint(
-            //         "candidateData = $candidateData , rejectedData = $rejectedData");
-            //     return buildBox("$count", Colors.green[200]);
-            //   },
-            //   onWillAccept: (data) {
-            //     debugPrint("onWillAccept");
-            //     return data == 1; // accept when data = 1 only.
-            //   },
-            //   onAccept: (int data) {
-            //     debugPrint("onAccept");
-            //     count += data;
-            //   },
-            //   onLeave: (data) {
-            //     debugPrint("onLeave");
-            //   },
-            // )
-
-            // gapH32,
-            // DragTarget<String>(
-            //   builder: (context, data, rejectedData) {
-            //     return Container(
-            //       decoration: ShapeDecoration(
-            //           color: Colors.red[300],
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(32))),
-            //       height: 150.0,
-            //       width: 150.0,
-            //       child: activeEmoji == ''
-            //           ? null
-            //           : FruitBox(activeEmoji, Colors.blue),
-            //     );
-            //   },
-            //   onWillAccept: (emoji) {
-            //     return emoji == '🍌' ? false : true;
-            //   },
-            //   onAccept: (data) {
-            //     setState(() {
-            //       insideTarget = !insideTarget;
-            //       activeEmoji = data;
-            //     });
-            //   },
-            // ),
-            // const SizedBox(height: 50.0),
-            // const Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     FruitBox('🍎', Colors.red),
-            //     FruitBox('🍌', Colors.green),
-            //   ],
-            // ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class FruitBox extends StatelessWidget {
-  final String boxIcon;
-  final Color boxColor;
-
-  const FruitBox(this.boxIcon, this.boxColor, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Draggable<String>(
-      data: boxIcon,
-      feedback: Container(
-        decoration: ShapeDecoration(
-            color: Colors.yellow,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32))),
-        height: 120.0,
-        width: 120.0,
-        child: Center(
-            child: Text(boxIcon, style: const TextStyle(fontSize: 50.0))),
-      ),
-      childWhenDragging: Container(
-        decoration: ShapeDecoration(
-            color: Colors.orange,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32))),
-        height: 120.0,
-        width: 120.0,
-      ),
-      child: Container(
-        decoration: ShapeDecoration(
-            color: boxColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(32))),
-        height: 120.0,
-        width: 120.0,
-        child: Center(
-            child: Text(boxIcon, style: const TextStyle(fontSize: 50.0))),
-      ),
-    );
-  }
-}
+  
+// }
