@@ -13,16 +13,6 @@ class LessonsScreen extends ConsumerWidget {
         body: ListView(
       children: [
         ListTile(
-            onTap: () => myNavigate(context,
-                screen: const DragWidget(
-                  shownWord: 'pencil',
-                  firstChoice: 'his',
-                  secondChoice: 'her',
-                  answer: 'his',
-                )),
-            leading: const CircleAvatar(),
-            title: const Text('pronoun1')),
-        ListTile(
             onTap: () => myNavigate(context, screen: const TestPageView()),
             leading: const CircleAvatar(),
             title: const Text('test page view')),

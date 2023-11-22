@@ -1,7 +1,13 @@
-import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
+import 'package:collocation_dictionary/common_widgets/my_text.dart';
+import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/project_lists/drag_widget_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+
+final pageControllerProvider = StateProvider<PageController>((ref) {
+  return PageController();
+});
 
 class TestPageView extends ConsumerStatefulWidget {
   const TestPageView({super.key});
@@ -12,33 +18,19 @@ class TestPageView extends ConsumerStatefulWidget {
 
 class _TestPageViewState extends ConsumerState<TestPageView> {
   int activePage = 0;
-  late PageController _pageController;
+  final PageController _pageController = PageController();
 
   void nextPage() {
     _pageController.nextPage(
         duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 
-  List<Widget> dragWidgets = [
-    const DragWidget(
-      shownWord: 'pencil',
-      firstChoice: 'his',
-      secondChoice: 'her',
-      answer: 'his',
-    ),
-    const DragWidget(
-      shownWord: 'pen',
-      firstChoice: 'my',
-      secondChoice: 'your',
-      answer: 'my',
-    ),
-  ];
 
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _pageController = PageController();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +40,22 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             height: MediaQuery.of(context).size.height * 0.1,
-            child: StepProgressIndicator(
-              totalSteps: dragWidgets.length,
-              currentStep: activePage + 1,
-              size: 8,
-              padding: 0,
-              selectedColor: Colors.yellow,
-              unselectedColor: Colors.grey.shade100,
-              roundedEdges: const Radius.circular(10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: StepProgressIndicator(
+                    totalSteps: dragWidgets.length,
+                    currentStep: activePage + 1,
+                    size: 8,
+                    padding: 0,
+                    selectedColor: Colors.green,
+                    unselectedColor: Colors.grey.shade300,
+                    roundedEdges: const Radius.circular(10),
+                  ),
+                ),
+                gapW8,
+                MyText('${activePage + 1} / ${dragWidgets.length}', 16),
+              ],
             ),
           ),
           SizedBox(
@@ -74,13 +74,13 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
                   return Container(child: dragWidgets[pagePosition]);
                 }),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-            child: ElevatedButton(
-              onPressed: () => nextPage(),
-              child: const Text('Next'),
-            ),
-          )
+          // SizedBox(
+          //   height: MediaQuery.of(context).size.height * 0.05,
+          //   child: ElevatedButton(
+          //     onPressed: () => nextPage(),
+          //     child: const Text('Next'),
+          //   ),
+          // )
         ],
       ),
     );
