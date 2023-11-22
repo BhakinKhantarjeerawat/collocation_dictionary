@@ -195,19 +195,19 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       onAccept: (data) async {
         debugPrint(data);
         ref.read(ttsProvider).speak('$data ${widget.staticWord}');
-        showSnackBarGlobal(context, 'Correct!');
+
         ref.read(isDroppedProvider.notifier).state = true;
-        setState(() {
-          data = data;
-        });
-        ref.read(pageControllerProvider).nextPage(
-            duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
+        // setState(() {
+        //   data = data;
+        // });
+        // ref.read(pageControllerProvider).nextPage(
+        //     duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
-            showSnackBarGlobal(context, 'wrong!');
+            // showSnackBarGlobal(context, 'wrong!');
           });
         }
         return data == widget.answer;

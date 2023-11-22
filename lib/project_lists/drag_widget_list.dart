@@ -15,7 +15,13 @@ List<Widget> dragWidgets = [
     answer: 'my',
   ),
   const DragWidget(
-    shownWord: 'pencil',
+    shownWord: 'books',
+    firstChoice: 'its',
+    secondChoice: 'your',
+    answer: 'its',
+  ),
+   const DragWidget(
+    shownWord: 'school',
     firstChoice: 'his',
     secondChoice: 'her',
     answer: 'his',
