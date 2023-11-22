@@ -1,4 +1,6 @@
 // import 'package:audioplayers/audioplayers.dart';
+import 'package:collocation_dictionary/common_widgets/alert_dialogs.dart';
+import 'package:collocation_dictionary/common_widgets/my_curve_container.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
@@ -42,8 +44,8 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                 children: [
                   MyDragTarget(
                       staticWord: widget.shownWord, answer: widget.answer),
-                  Container(
-                      color: Colors.green,
+                  SizedBox(
+                      // color: Colors.green,
                       height: 90,
                       child: Center(child: MyText(widget.shownWord, 34)))
                 ],
@@ -58,30 +60,32 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                     data: widget.firstChoice,
                     feedback: Material(
                       color: Colors.blueAccent,
-                      child: Card(
-                        color: Colors.red,
-                        child: Center(
-                          child: MyText(widget.firstChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.firstChoice, 34),
                       ),
                     ),
                     childWhenDragging: Opacity(
                       opacity: 0.0,
-                      child: Card(
-                        color: Colors.red,
-                        child: Center(
-                          child: MyText(widget.firstChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.firstChoice, 34),
                       ),
                     ),
                     child: InkWell(
+                      onLongPress: () => showMyAlertDialog(
+                          context: context,
+                          widget: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              MyText('His', 32),
+                              gapH16,
+                              MyText('ความหมาย: ของเขา', 21)
+                              
+                            ],
+                          )),
                       onTap: () =>
                           ref.read(ttsProvider).speak(widget.firstChoice),
-                      child: Card(
-                        color: Colors.red,
-                        child: Center(
-                          child: MyText(widget.firstChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.firstChoice, 34),
                       ),
                     ),
                   ),
@@ -90,30 +94,21 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                     data: 'blue',
                     feedback: Material(
                       color: Colors.blueAccent,
-                      child: Card(
-                        color: Colors.green,
-                        child: Center(
-                          child: MyText(widget.secondChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.secondChoice, 34),
                       ),
                     ),
                     childWhenDragging: Opacity(
                       opacity: 0.0,
-                      child: Card(
-                        color: Colors.green,
-                        child: Center(
-                          child: MyText(widget.secondChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.secondChoice, 34),
                       ),
                     ),
                     child: InkWell(
                       onTap: () =>
                           ref.read(ttsProvider).speak(widget.secondChoice),
-                      child: Card(
-                        color: Colors.green,
-                        child: Center(
-                          child: MyText(widget.secondChoice, 34),
-                        ),
+                      child: MyCurveContainer(
+                        child: MyText(widget.secondChoice, 34),
                       ),
                     ),
                   )
@@ -148,6 +143,7 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
         List<dynamic> rejected,
       ) {
         return DottedBorder(
+          // borderType: BorderType.Oval,
           child: Container(
             height: 90,
             width: 90,

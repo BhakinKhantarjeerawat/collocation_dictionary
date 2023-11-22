@@ -1,6 +1,6 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/providers.dart';
-import 'package:collocation_dictionary/features/home/presentation/drag_widget.dart';
+import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
 import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -67,13 +67,7 @@ class _SearchWidgetState extends ConsumerState<SearchWidget> {
               icon: const Icon(Icons.search_outlined, color: Colors.white),
               iconSize: 55,
               onPressed: () {
-                myNavigate(context,
-                    screen: const DragWidget(
-                      shownWord: 'pencil',
-                      firstChoice: 'his',
-                      secondChoice: 'her',
-                      answer: 'his',
-                    ));
+                
               }),
         ],
       ),
