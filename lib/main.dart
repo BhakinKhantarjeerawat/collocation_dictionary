@@ -1,5 +1,4 @@
-import 'package:collocation_dictionary/constants/app_theme.dart';
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+
 import 'package:collocation_dictionary/features/home/presentation/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

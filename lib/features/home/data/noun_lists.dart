@@ -1,9 +1,9 @@
-import 'package:collocation_dictionary/features/home/models/noun.dart';
+import 'package:collocation_dictionary/features/home/models/word.dart';
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
 import 'package:flutter/material.dart';
 
-List<Noun> nounList = [
-  Noun(
+List<Word> nounList = [
+  Word(
       word: 'computer',
       sound: 'ค็อม พิ้ว เทอะ',
       meaning: 'คอมพิวเตอร์',
@@ -18,21 +18,34 @@ List<Noun> nounList = [
         'sell'
       ],
       iconData: Icons.computer),
-  Noun(
+  Word(
       word: 'keyboard',
       sound: 'คี้ บ็อร์ด',
       meaning: 'คียบอร์ด',
       wordType: WordType.noun,
-      collocations: ['type', 'fix', 'buy', 'sell', 'type', 'fix', 'buy', 'sell', 'type', 'fix', 'buy', 'sell'],
+      collocations: [
+        'type',
+        'fix',
+        'buy',
+        'sell',
+        'type',
+        'fix',
+        'buy',
+        'sell',
+        'type',
+        'fix',
+        'buy',
+        'sell'
+      ],
       iconData: Icons.keyboard),
-  Noun(
+  Word(
       word: 'key',
       sound: 'คี้',
       meaning: 'กุญแจ',
       wordType: WordType.noun,
       collocations: ['insert', 'press', 'save', 'copy'],
       iconData: Icons.key),
-  Noun(
+  Word(
       word: 'monitor',
       sound: 'มอนิเตอร์',
       meaning: 'จอภาพ',

@@ -1,5 +1,4 @@
 import 'package:collocation_dictionary/features/home/models/verb.dart';
-import 'package:collocation_dictionary/features/home/models/noun.dart';
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
 import 'package:flutter/material.dart';
 

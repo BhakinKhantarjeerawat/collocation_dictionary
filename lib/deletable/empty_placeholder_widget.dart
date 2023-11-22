@@ -1,4 +1,4 @@
-import 'package:collocation_dictionary/common_widgets/primary_button.dart';
+import 'package:collocation_dictionary/deletable/primary_button.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 

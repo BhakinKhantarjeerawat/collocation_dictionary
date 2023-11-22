@@ -1,14 +1,7 @@
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
-import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
-// List<Widget> textWidgets = [
-//   const Text('aa'),
-//   const Text('bb'),
-//   const Text('cc')
-// ];
 
 class TestPageView extends ConsumerStatefulWidget {
   const TestPageView({super.key});
@@ -20,6 +13,12 @@ class TestPageView extends ConsumerStatefulWidget {
 class _TestPageViewState extends ConsumerState<TestPageView> {
   int activePage = 0;
   late PageController _pageController;
+
+  void nextPage() {
+    _pageController.nextPage(
+        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+  }
+
   List<Widget> dragWidgets = [
     const DragWidget(
       shownWord: 'pencil',
@@ -38,7 +37,7 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 1);
+    _pageController = PageController();
   }
 
   @override
@@ -46,30 +45,24 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
     return Scaffold(
       body: Column(
         children: [
-          gapH32,
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            height: 60,
+            height: MediaQuery.of(context).size.height * 0.1,
             child: StepProgressIndicator(
-              totalSteps: 100,
-              currentStep: 32,
+              totalSteps: dragWidgets.length,
+              currentStep: activePage + 1,
               size: 8,
               padding: 0,
               selectedColor: Colors.yellow,
               unselectedColor: Colors.grey.shade100,
               roundedEdges: const Radius.circular(10),
-              selectedGradientColor: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.yellowAccent, Colors.deepOrange],
-              ),
             ),
           ),
-          gapH16,
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.85,
             child: PageView.builder(
-                itemCount: 3,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: dragWidgets.length,
                 pageSnapping: true,
                 controller: _pageController,
                 onPageChanged: (page) {
@@ -78,11 +71,16 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
                   });
                 },
                 itemBuilder: (context, pagePosition) {
-                  return Container(
-                      // margin: const EdgeInsets.all(10),
-                      child: dragWidgets[pagePosition]);
+                  return Container(child: dragWidgets[pagePosition]);
                 }),
           ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+            child: ElevatedButton(
+              onPressed: () => nextPage(),
+              child: const Text('Next'),
+            ),
+          )
         ],
       ),
     );

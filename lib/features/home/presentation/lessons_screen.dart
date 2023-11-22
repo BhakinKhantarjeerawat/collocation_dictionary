@@ -1,5 +1,4 @@
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/test_page_view.dart';
 import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';

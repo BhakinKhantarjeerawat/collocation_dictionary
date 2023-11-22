@@ -1,5 +1,4 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/data/lesson_list.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/lessons_screen.dart';
 import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';

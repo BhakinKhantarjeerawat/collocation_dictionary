@@ -1,8 +1,7 @@
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
 import 'package:flutter/material.dart';
-
-class Noun {
-  Noun(
+class Word {
+  Word(
       {required this.word,
       required this.sound,
       required this.meaning,

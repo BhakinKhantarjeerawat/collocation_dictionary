@@ -5,10 +5,10 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
+import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:just_audio/just_audio.dart';
 
 final isDroppedProvider = StateProvider<bool>((ref) {
   return false;
@@ -71,19 +71,33 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                       ),
                     ),
                     child: InkWell(
-                      onLongPress: () => showMyAlertDialog(
-                          context: context,
-                          widget: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              MyText('His', 32),
-                              gapH16,
-                              MyText('ความหมาย: ของเขา', 21)
-                              
-                            ],
-                          )),
                       onTap: () =>
                           ref.read(ttsProvider).speak(widget.firstChoice),
+                      onLongPress: () => showMyAlertDialog(
+                        context: context,
+                        widget: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.firstChoice)!
+                                    .word,
+                                32),
+                            gapH16,
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.firstChoice)!
+                                    .sound,
+                                21),
+                            gapH16,
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.firstChoice)!
+                                    .meaning,
+                                21)
+                          ],
+                        ),
+                      ),
                       child: MyCurveContainer(
                         child: MyText(widget.firstChoice, 34),
                       ),
@@ -107,6 +121,31 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                     child: InkWell(
                       onTap: () =>
                           ref.read(ttsProvider).speak(widget.secondChoice),
+                      onLongPress: () => showMyAlertDialog(
+                        context: context,
+                        widget: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.secondChoice)!
+                                    .word,
+                                32),
+                            gapH16,
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.secondChoice)!
+                                    .sound,
+                                21),
+                            gapH16,
+                            MyText(
+                                WordRepository()
+                                    .mapPronoun(word: widget.secondChoice)!
+                                    .meaning,
+                                21)
+                          ],
+                        ),
+                      ),
                       child: MyCurveContainer(
                         child: MyText(widget.secondChoice, 34),
                       ),
