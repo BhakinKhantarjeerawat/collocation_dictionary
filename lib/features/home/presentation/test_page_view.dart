@@ -18,12 +18,12 @@ class TestPageView extends ConsumerStatefulWidget {
 
 class _TestPageViewState extends ConsumerState<TestPageView> {
   int activePage = 0;
-  final PageController _pageController = PageController();
+  // final PageController _pageController = PageController();
 
-  void nextPage() {
-    _pageController.nextPage(
-        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
-  }
+  // void nextPage() {
+  //   _pageController.nextPage(
+  //       duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+  // }
 
 
   // @override
@@ -64,7 +64,7 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: dragWidgets.length,
                 pageSnapping: true,
-                controller: _pageController,
+                controller: ref.watch(pageControllerProvider),
                 onPageChanged: (page) {
                   setState(() {
                     activePage = page;

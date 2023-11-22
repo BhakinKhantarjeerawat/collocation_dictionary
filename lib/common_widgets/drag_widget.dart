@@ -6,6 +6,7 @@ import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
+import 'package:collocation_dictionary/features/home/presentation/test_page_view.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -199,6 +200,8 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
         setState(() {
           data = data;
         });
+        ref.read(pageControllerProvider).nextPage(
+            duration: const Duration(milliseconds: 100), curve: Curves.easeIn);
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
