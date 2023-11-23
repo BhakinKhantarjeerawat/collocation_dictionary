@@ -9,47 +9,55 @@ List<Word> pronounList = [
       meaning: 'ของเขา',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
+      imagePath: 'assets/images/happiness.png'),
   Word(
       word: 'her',
       sound: 'เฮอ',
       meaning: 'ของเธอ(ผู้หญิง)',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
+      imagePath: 'assets/images/happiness.png'),
   Word(
       word: 'my',
       sound: 'มาย',
       meaning: 'ของฉัน',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
+      imagePath: 'assets/images/happiness.png'),
   Word(
       word: 'your',
       sound: 'ยัว',
       meaning: 'ของคุณ (คุณคนเดียวก็ได้ พวกคุณก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
-        Word(
+            imagePath: 'assets/images/happiness.png'
+
+      ),
+  Word(
       word: 'thier',
       sound: 'แด',
       meaning: 'ของพวกเขา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
-      Word(
+            imagePath: 'assets/images/happiness.png'
+
+      ),
+  Word(
       word: 'our',
       sound: 'อาว',
       meaning: 'ของพวกเรา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-      iconData: Icons.tour),
-      // Word(
-      // word: '',
-      // sound: 'อาว',
-      // meaning: 'ของพวกเรา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
-      // wordType: WordType.pronoun,
-      // collocations: [],
-      // iconData: Icons.tour),
+            imagePath: 'assets/images/happiness.png'
+      ),
+      Word(
+      word: 'its',
+      sound: 'อิทเซอะ',
+      meaning: 'ของมัน (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
+      wordType: WordType.pronoun,
+      collocations: [],
+            imagePath: 'assets/images/happiness.png'
+
+      ),
+  
 ];

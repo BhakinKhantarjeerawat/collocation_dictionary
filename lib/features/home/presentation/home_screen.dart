@@ -93,8 +93,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     borderRadius: BorderRadius.circular(15)),
                                 child: Column(
                                   children: [
-                                    Icon(foundWords[index].iconData,
-                                        size: 77, color: Colors.blueGrey),
+                                    // Icon(foundWords[index].iconData,
+                                    //     size: 77, color: Colors.blueGrey),
                                     Text(
                                       foundWords[index].word,
                                       style: const TextStyle(fontSize: 21),

@@ -20,10 +20,12 @@ class DragWidget extends ConsumerStatefulWidget {
       {super.key,
       required this.shownWord,
       required this.choices,
-      required this.answer});
+      required this.answer,
+      this.imagePath});
   final String shownWord;
   final List<String> choices;
   final String answer;
+  final String? imagePath;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DragWidgetState();
@@ -34,37 +36,42 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.blueAccent,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            gapH32,
+            widget.imagePath == null
+                ? const SizedBox()
+                : SizedBox(
+                    height: 180,
+                    child: Image.asset(widget.imagePath!),
+                  ),
+            gapH32,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MyDragTarget(
+                    staticWord: widget.shownWord, answer: widget.answer),
+                SizedBox(
+                    // color: Colors.green,
+                    height: 90,
+                    child: Center(child: MyText(widget.shownWord, 34)))
+              ],
+            ),
+            gapH64,
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                alignment: WrapAlignment.spaceEvenly,
+                spacing: 8.0, // gap between adjacent chips
+                runSpacing: 4.0, // gap between lines
                 children: [
-                  MyDragTarget(
-                      staticWord: widget.shownWord, answer: widget.answer),
-                  SizedBox(
-                      // color: Colors.green,
-                      height: 90,
-                      child: Center(child: MyText(widget.shownWord, 34)))
+                  for (var i in widget.choices) DraggableWidget(data: i),
                 ],
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.15,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Wrap(
-                  alignment: WrapAlignment.spaceEvenly,
-                  spacing: 8.0, // gap between adjacent chips
-                  runSpacing: 4.0, // gap between lines
-                  children: [
-                    for (var i in widget.choices) DraggableWidget(data: i),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ));
   }
 }

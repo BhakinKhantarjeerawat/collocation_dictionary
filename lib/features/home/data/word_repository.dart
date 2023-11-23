@@ -31,7 +31,7 @@ class WordRepository {
           sound: 'error',
           meaning: 'error',
           collocations: ['error'],
-          iconData: Icons.numbers,
+          // iconData: Icons.numbers,
           wordType: WordType.noun);
     }
     return    Word(
@@ -39,7 +39,7 @@ class WordRepository {
           sound: 'error',
           meaning: 'error',
           collocations: ['error'],
-          iconData: Icons.numbers,
+          // iconData: Icons.numbers,
           wordType: WordType.noun);
   }
 }

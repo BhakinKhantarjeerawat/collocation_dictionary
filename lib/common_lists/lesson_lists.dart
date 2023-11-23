@@ -15,6 +15,7 @@ List<Widget> pronounLesson1 = [
     shownWord: 'pencil',
     choices: ['his', 'her', 'our'],
     answer: 'his',
+    imagePath: 'assets/images/happiness.png',
   ),
   const DragWidget(
     shownWord: 'pen',

@@ -72,21 +72,9 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
                   return Container(child: pronounLesson1[pagePosition]);
                 }),
           ),
-          // (activePage == 0 || activePage == pronounLesson1.length - 1)
-          // (activePage == 0)
-          //     ? ElevatedButton(
-          //         key: const Key('eleButton1'),
-          //         onPressed: () {
-          //           ref.read(isDroppedProvider.notifier).state = false;
-          //           nextPage();
-          //         },
-          //         child: const Text('Next'),
-          //       )
-          //     : 
               SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                   child: ElevatedButton(
-                    key: const Key('eleButton2'),
                     onPressed: (!ref.watch(isDroppedProvider) && activePage != 0 && activePage == pronounLesson1.length - 1)
                         ? null
                         : () {

@@ -55,13 +55,13 @@ class _WordDetailsScreenState extends ConsumerState<WordDetailsScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 gapH32,
-                CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 70,
-                  child: Icon(foundWords[widget.index].iconData,
-                      size: 140, color: Colors.blueAccent),
-                ),
-                gapH16,
+                // CircleAvatar(
+                //   backgroundColor: Colors.transparent,
+                //   radius: 70,
+                //   child: Icon(foundWords[widget.index].iconData,
+                //       size: 140, color: Colors.blueAccent),
+                // ),
+                // gapH16,
                 gapH16,
                 Row(
                   children: [

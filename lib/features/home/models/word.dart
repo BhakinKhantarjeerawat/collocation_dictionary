@@ -7,12 +7,14 @@ class Word {
       required this.meaning,
       required this.wordType,
       required this.collocations,
-      required this.iconData
+      this.iconData,
+      this.imagePath
       });
   final String word;
   final String sound;
   final WordType wordType;
   final String meaning;
   final List<String> collocations;
-  final IconData iconData;
+  final IconData? iconData;
+  final String? imagePath;
 }
