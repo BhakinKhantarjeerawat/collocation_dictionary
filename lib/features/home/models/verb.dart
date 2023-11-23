@@ -1,7 +1,6 @@
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
 import 'package:flutter/material.dart';
 
-
 class Verb {
   Verb(
       {required this.word,

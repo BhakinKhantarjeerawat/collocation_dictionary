@@ -2,7 +2,7 @@ import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
-import 'package:collocation_dictionary/features/home/presentation/widgets/search_widgets.dart';
+import 'package:collocation_dictionary/common_widgets/search_widgets.dart';
 import 'package:collocation_dictionary/features/home/presentation/word_details_screen.dart';
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
@@ -69,9 +69,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               onTap: () {
                                 myNavigate(context,
                                     screen: WordDetailsScreen(index: index));
-
-                    
-
                                 // showMyAlertDialog(
                                 //     context: context,
                                 //     widget: Column(

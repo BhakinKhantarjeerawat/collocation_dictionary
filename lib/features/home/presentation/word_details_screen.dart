@@ -1,7 +1,6 @@
 import 'package:collocation_dictionary/common_widgets/my_buttons.dart';
 import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-
 import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:collocation_dictionary/common_lists/adjective_list.dart';

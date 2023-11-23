@@ -1,10 +1,10 @@
 import 'package:collocation_dictionary/features/home/models/verb.dart';
-import 'package:collocation_dictionary/features/home/models/word.dart';
+import 'package:collocation_dictionary/features/lesson/models/word.dart';
 import 'package:collocation_dictionary/common_lists/noun_lists.dart';
 import 'package:collocation_dictionary/common_lists/pronoun_list.dart';
 import 'package:collocation_dictionary/common_lists/verb_list.dart';
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
-import 'package:flutter/material.dart';
+
 
 class WordRepository {
   List<Word> searchWords({required String word}) {

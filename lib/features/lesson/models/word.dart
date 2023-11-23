@@ -8,7 +8,9 @@ class Word {
       required this.wordType,
       required this.collocations,
       this.iconData,
-      this.imagePath
+      this.imagePath,
+      this.audioPath,
+      this.translation,
       });
   final String word;
   final String sound;
@@ -17,4 +19,6 @@ class Word {
   final List<String> collocations;
   final IconData? iconData;
   final String? imagePath;
+  final String? audioPath;
+  final String? translation;
 }

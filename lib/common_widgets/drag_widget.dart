@@ -21,11 +21,15 @@ class DragWidget extends ConsumerStatefulWidget {
       required this.shownWord,
       required this.choices,
       required this.answer,
-      this.imagePath});
+      this.imagePath,
+      this.translation
+      });
   final String shownWord;
   final List<String> choices;
   final String answer;
   final String? imagePath;
+  final String? translation;
+
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DragWidgetState();
@@ -41,9 +45,11 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             gapH32,
-            widget.imagePath == null
-                ? const SizedBox()
-                : SizedBox(
+            if  (widget.imagePath != null) 
+            //  == null
+            //     ? const SizedBox()
+            //     :
+                 SizedBox(
                     height: 180,
                     child: Image.asset(widget.imagePath!),
                   ),
