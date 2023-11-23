@@ -59,7 +59,7 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.85,
+            height: MediaQuery.of(context).size.height * 0.8,
             child: PageView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: dragWidgets.length,
@@ -75,14 +75,14 @@ class _TestPageViewState extends ConsumerState<TestPageView> {
                 }),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
+            height: MediaQuery.of(context).size.height * 0.1,
             child: ElevatedButton(
-              onPressed: 
-              !ref.watch(isDroppedProvider) ? null :
-              () {
-                ref.read(isDroppedProvider.notifier).state = false;
-                nextPage();
-              },
+              onPressed: !ref.watch(isDroppedProvider)
+                  ? null
+                  : () {
+                      ref.read(isDroppedProvider.notifier).state = false;
+                      nextPage();
+                    },
               child: const Text('Next'),
             ),
           )

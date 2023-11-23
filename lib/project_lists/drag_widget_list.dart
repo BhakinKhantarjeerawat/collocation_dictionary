@@ -20,10 +20,10 @@ List<Widget> dragWidgets = [
     secondChoice: 'your',
     answer: 'its',
   ),
-   const DragWidget(
+  const DragWidget(
     shownWord: 'school',
-    firstChoice: 'his',
+    firstChoice: 'hisasdfasdfasdf',
     secondChoice: 'her',
-    answer: 'his',
+    answer: 'hisasdfasdfasdf',
   ),
 ];

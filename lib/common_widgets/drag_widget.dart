@@ -1,4 +1,5 @@
 // import 'package:audioplayers/audioplayers.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collocation_dictionary/common_widgets/alert_dialogs.dart';
 import 'package:collocation_dictionary/common_widgets/my_curve_container.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
@@ -54,105 +55,21 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.15,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Draggable<String>(
-                    data: widget.firstChoice,
-                    feedback: Material(
-                      color: Colors.blueAccent,
-                      child: MyCurveContainer(
-                        child: MyText(widget.firstChoice, 34),
-                      ),
-                    ),
-                    childWhenDragging: Opacity(
-                      opacity: 0.0,
-                      child: MyCurveContainer(
-                        child: MyText(widget.firstChoice, 34),
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () =>
-                          ref.read(ttsProvider).speak(widget.firstChoice),
-                      onLongPress: () => showMyAlertDialog(
-                        context: context,
-                        widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.firstChoice)!
-                                    .word,
-                                32),
-                            gapH16,
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.firstChoice)!
-                                    .sound,
-                                21),
-                            gapH16,
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.firstChoice)!
-                                    .meaning,
-                                21)
-                          ],
-                        ),
-                      ),
-                      child: MyCurveContainer(
-                        child: MyText(widget.firstChoice, 34),
-                      ),
-                    ),
-                  ),
-                  gapW16,
-                  Draggable<String>(
-                    data: 'blue',
-                    feedback: Material(
-                      color: Colors.blueAccent,
-                      child: MyCurveContainer(
-                        child: MyText(widget.secondChoice, 34),
-                      ),
-                    ),
-                    childWhenDragging: Opacity(
-                      opacity: 0.0,
-                      child: MyCurveContainer(
-                        child: MyText(widget.secondChoice, 34),
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () =>
-                          ref.read(ttsProvider).speak(widget.secondChoice),
-                      onLongPress: () => showMyAlertDialog(
-                        context: context,
-                        widget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.secondChoice)!
-                                    .word,
-                                32),
-                            gapH16,
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.secondChoice)!
-                                    .sound,
-                                21),
-                            gapH16,
-                            MyText(
-                                WordRepository()
-                                    .mapPronoun(word: widget.secondChoice)!
-                                    .meaning,
-                                21)
-                          ],
-                        ),
-                      ),
-                      child: MyCurveContainer(
-                        child: MyText(widget.secondChoice, 34),
-                      ),
-                    ),
-                  )
-                ],
+              SizedBox(
+                width: double.infinity,
+                child: Wrap(
+                  alignment: WrapAlignment.spaceEvenly,
+                  spacing: 8.0, // gap between adjacent chips
+                  runSpacing: 4.0, // gap between lines
+                  children: [
+                    DraggableWidget(data: widget.firstChoice),
+                    DraggableWidget(data: widget.secondChoice),
+                    DraggableWidget(data: widget.firstChoice),
+                    DraggableWidget(data: widget.secondChoice),
+                    DraggableWidget(data: widget.firstChoice),
+                    DraggableWidget(data: widget.secondChoice),
+                  ],
+                ),
               ),
             ],
           ),
@@ -186,16 +103,23 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
           // borderType: BorderType.Oval,
           child: Container(
             height: 90,
-            width: 90,
+            width: 140,
             color: Colors.blueAccent,
-            child: Center(child: MyText(!isDropped ? '' : widget.answer, 34)),
+            child: Center(
+                child: AutoSizeText(
+              minFontSize: 16,
+              !isDropped ? '' : widget.answer,
+              style: const TextStyle(fontSize: 34),
+              maxLines: 2,
+            )
+                //  MyText(,34)
+                ),
           ),
         );
       },
       onAccept: (data) async {
         debugPrint(data);
         ref.read(ttsProvider).speak('$data ${widget.staticWord}');
-
         ref.read(isDroppedProvider.notifier).state = true;
         // setState(() {
         //   data = data;
@@ -207,7 +131,7 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
         if (data != widget.answer) {
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
-            // showSnackBarGlobal(context, 'wrong!');
+            showSnackBarGlobal(context, 'wrong!');
           });
         }
         return data == widget.answer;
@@ -215,6 +139,49 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       // onLeave: (data) {
       //   showSnackBarGlobal(context, 'Missed');
       // },
+    );
+  }
+}
+
+class DraggableWidget extends ConsumerWidget {
+  const DraggableWidget({super.key, required this.data});
+  final String data;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Draggable<String>(
+      data: data,
+      feedback: Material(
+        color: Colors.blueAccent,
+        child: MyCurveContainer(
+          child: MyText(data, 34),
+        ),
+      ),
+      childWhenDragging: Opacity(
+        opacity: 0.0,
+        child: MyCurveContainer(
+          child: MyText(data, 34),
+        ),
+      ),
+      child: InkWell(
+        onTap: () => ref.read(ttsProvider).speak(data),
+        onLongPress: () => showMyAlertDialog(
+          context: context,
+          widget: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              MyText(WordRepository().mapPronoun(word: data)!.word, 32),
+              gapH16,
+              MyText(WordRepository().mapPronoun(word: data)!.sound, 21),
+              gapH16,
+              MyText(WordRepository().mapPronoun(word: data)!.meaning, 21)
+            ],
+          ),
+        ),
+        child: MyCurveContainer(
+          child: MyText(data, 34),
+        ),
+      ),
     );
   }
 }
