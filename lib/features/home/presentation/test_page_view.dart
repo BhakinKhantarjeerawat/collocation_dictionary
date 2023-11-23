@@ -1,14 +1,10 @@
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/project_lists/drag_widget_list.dart';
+import 'package:collocation_dictionary/common_lists/drag_widget_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-
-// final pageControllerProvider = StateProvider<PageController>((ref) {
-//   return PageController();
-// });
 
 class TestPageView extends ConsumerStatefulWidget {
   const TestPageView({super.key});

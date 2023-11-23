@@ -4,7 +4,7 @@ import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
 import 'package:collocation_dictionary/features/home/presentation/widgets/search_widgets.dart';
 import 'package:collocation_dictionary/features/home/presentation/word_details_screen.dart';
-import 'package:collocation_dictionary/global_methods.dart/my_navigate.dart';
+import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

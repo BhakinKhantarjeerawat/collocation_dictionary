@@ -4,26 +4,22 @@ import 'package:flutter/material.dart';
 List<Widget> dragWidgets = [
   const DragWidget(
     shownWord: 'pencil',
-    firstChoice: 'his',
-    secondChoice: 'her',
+    choices: ['his', 'her', 'our'],
     answer: 'his',
   ),
   const DragWidget(
     shownWord: 'pen',
-    firstChoice: 'my',
-    secondChoice: 'your',
+    choices: ['my', 'your'],
     answer: 'my',
   ),
   const DragWidget(
     shownWord: 'books',
-    firstChoice: 'its',
-    secondChoice: 'your',
-    answer: 'its',
+    choices: ['thier', 'our'],
+    answer: 'our',
   ),
   const DragWidget(
     shownWord: 'school',
-    firstChoice: 'hisasdfasdfasdf',
-    secondChoice: 'her',
-    answer: 'hisasdfasdfasdf',
+    choices: ['his', 'thier'],
+    answer: 'his',
   ),
 ];

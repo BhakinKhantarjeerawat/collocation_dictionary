@@ -1,10 +1,11 @@
 import 'package:collocation_dictionary/common_widgets/my_buttons.dart';
 import 'package:collocation_dictionary/common_widgets/my_filled_image.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/data/article_list.dart';
-import 'package:collocation_dictionary/features/home/data/adjective_list.dart';
+
 import 'package:collocation_dictionary/features/home/data/providers.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
+import 'package:collocation_dictionary/common_lists/adjective_list.dart';
+import 'package:collocation_dictionary/common_lists/article_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

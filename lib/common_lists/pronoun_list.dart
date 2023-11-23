@@ -31,4 +31,25 @@ List<Word> pronounList = [
       wordType: WordType.pronoun,
       collocations: [],
       iconData: Icons.tour),
+        Word(
+      word: 'thier',
+      sound: 'แด',
+      meaning: 'ของพวกเขา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
+      wordType: WordType.pronoun,
+      collocations: [],
+      iconData: Icons.tour),
+      Word(
+      word: 'our',
+      sound: 'อาว',
+      meaning: 'ของพวกเรา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
+      wordType: WordType.pronoun,
+      collocations: [],
+      iconData: Icons.tour),
+      // Word(
+      // word: '',
+      // sound: 'อาว',
+      // meaning: 'ของพวกเรา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
+      // wordType: WordType.pronoun,
+      // collocations: [],
+      // iconData: Icons.tour),
 ];

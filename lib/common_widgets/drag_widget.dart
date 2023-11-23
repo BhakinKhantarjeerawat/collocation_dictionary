@@ -7,7 +7,6 @@ import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
-import 'package:collocation_dictionary/features/home/presentation/test_page_view.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,12 +19,10 @@ class DragWidget extends ConsumerStatefulWidget {
   const DragWidget(
       {super.key,
       required this.shownWord,
-      required this.firstChoice,
-      required this.secondChoice,
+      required this.choices,
       required this.answer});
   final String shownWord;
-  final String firstChoice;
-  final String secondChoice;
+  final List<String> choices;
   final String answer;
 
   @override
@@ -62,12 +59,7 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                   spacing: 8.0, // gap between adjacent chips
                   runSpacing: 4.0, // gap between lines
                   children: [
-                    DraggableWidget(data: widget.firstChoice),
-                    DraggableWidget(data: widget.secondChoice),
-                    DraggableWidget(data: widget.firstChoice),
-                    DraggableWidget(data: widget.secondChoice),
-                    DraggableWidget(data: widget.firstChoice),
-                    DraggableWidget(data: widget.secondChoice),
+                    for (var i in widget.choices) DraggableWidget(data: i),
                   ],
                 ),
               ),
@@ -111,9 +103,7 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
               !isDropped ? '' : widget.answer,
               style: const TextStyle(fontSize: 34),
               maxLines: 2,
-            )
-                //  MyText(,34)
-                ),
+            )),
           ),
         );
       },
