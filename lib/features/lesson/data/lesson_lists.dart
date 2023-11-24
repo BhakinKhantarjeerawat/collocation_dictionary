@@ -23,6 +23,12 @@ List<Widget> pronounLesson1 = [
     answer: 'my',
     translation: 'ปากกาของฉัน',
   ),
+    const DragWidget(
+    shownWord: 'ปากกา',
+    choices: ['ของฉัน', 'ของคุณ'],
+    answer: 'ของฉัน',
+    translation: 'my pen',
+  ),
   const DragWidget(
     shownWord: 'books',
     choices: ['thier', 'our'],

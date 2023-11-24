@@ -60,6 +60,31 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                       // height: 180,
                       child: Image.asset('assets/images/happiness.png'),
                     ),
+                    InkWell(
+                      onTap: () => ref
+                          .read(ttsProvider)
+                          .speak('test tts in bubble widget ${widget.translation!}'),
+                      child: Bubble(
+                        nipWidth: 30,
+                        nipHeight: 10,
+                        color: const Color.fromRGBO(225, 255, 199, 1.0),
+                        margin: const BubbleEdges.only(top: 10),
+                        nip: BubbleNip.leftTop,
+                        child: SizedBox(
+                          height: 90,
+                          child: MyText(widget.translation!, 27),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            if (widget.ttsText != null)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Expanded(child: Image.asset('assets/images/happiness.png')),
                     Bubble(
                       nipWidth: 30,
                       nipHeight: 10,
@@ -67,20 +92,16 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                       margin: const BubbleEdges.only(top: 10),
                       nip: BubbleNip.leftTop,
                       child: SizedBox(
-                        height: 90,
-                        child: MyText(widget.translation!, 27),
+                        // height: 180,
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        child: OutlinedButton(
+                            onPressed: () =>
+                                ref.read(ttsProvider).speak(widget.ttsText!),
+                            child: const Icon(Icons.speaker, size: 50)),
                       ),
                     ),
                   ],
                 ),
-              ),
-            if (widget.ttsText != null)
-              SizedBox(
-                height: 180,
-                child: OutlinedButton(
-                    onPressed: () =>
-                        ref.read(ttsProvider).speak(widget.ttsText!),
-                    child: const Icon(Icons.speaker, size: 50)),
               ),
             gapH32,
             Row(

@@ -1,6 +1,6 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
-import 'package:collocation_dictionary/features/lesson/presentation/lessons_screen.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/select_lessons_screen.dart';
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,9 +25,10 @@ class _IntroScreenState extends ConsumerState<IntroScreen> {
                   onTap: () => myNavigate(context, screen: const HomeScreen()),
                   leading: const CircleAvatar(),
                   title: const Text('home')),
-                  gapH16,
-                  ListTile(
-                  onTap: () => myNavigate(context, screen: const LessonsScreen()),
+              gapH16,
+              ListTile(
+                  onTap: () =>
+                      myNavigate(context, screen: const SelectLessonsScreen()),
                   leading: const CircleAvatar(),
                   title: const Text('lessons')),
             ],
