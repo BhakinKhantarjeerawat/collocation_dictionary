@@ -11,6 +11,7 @@ class Word {
       this.imagePath,
       this.audioPath,
       this.translation,
+      this.ttsText
       });
   final String word;
   final String sound;
@@ -21,4 +22,5 @@ class Word {
   final String? imagePath;
   final String? audioPath;
   final String? translation;
+  final String? ttsText;
 }

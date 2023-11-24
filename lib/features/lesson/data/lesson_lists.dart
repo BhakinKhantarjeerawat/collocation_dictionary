@@ -22,12 +22,12 @@ List<Widget> pronounLesson1 = [
     choices: ['my', 'your'],
     answer: 'my',
     translation: 'ปากกาของฉัน',
-    
   ),
   const DragWidget(
     shownWord: 'books',
     choices: ['thier', 'our'],
     answer: 'our',
+    ttsText: 'our books',
   ),
   const DragWidget(
     shownWord: 'school',
@@ -39,7 +39,6 @@ List<Widget> pronounLesson1 = [
     gapH8,
     MyText('คะแนน', 21),
     gapH8,
-    // MyText('${pronounLesson1.length}', 21),
   ]),
 ];
 
@@ -56,7 +55,7 @@ List<Widget> pronounLesson2 = [
     shownWord: 'pencil',
     choices: ['his', 'her', 'our'],
     answer: 'his',
-    imagePath: 'assets/images/happiness.png',
+    // imagePath: 'assets/images/happiness.png',
   ),
   const DragWidget(
     shownWord: 'pen',

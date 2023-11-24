@@ -1,5 +1,6 @@
 // import 'package:audioplayers/audioplayers.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bubble/bubble.dart';
 import 'package:collocation_dictionary/common_widgets/alert_dialogs.dart';
 import 'package:collocation_dictionary/common_widgets/my_curve_container.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
@@ -22,14 +23,14 @@ class DragWidget extends ConsumerStatefulWidget {
       required this.choices,
       required this.answer,
       this.imagePath,
-      this.translation
-      });
+      this.translation,
+      this.ttsText});
   final String shownWord;
   final List<String> choices;
   final String answer;
   final String? imagePath;
   final String? translation;
-
+  final String? ttsText;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DragWidgetState();
@@ -45,14 +46,42 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             gapH32,
-            if  (widget.imagePath != null) 
-            //  == null
-            //     ? const SizedBox()
-            //     :
-                 SizedBox(
-                    height: 180,
-                    child: Image.asset(widget.imagePath!),
-                  ),
+            if (widget.imagePath != null)
+              SizedBox(
+                height: 180,
+                child: Image.asset(widget.imagePath!),
+              ),
+            if (widget.translation != null)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      // height: 180,
+                      child: Image.asset('assets/images/happiness.png'),
+                    ),
+                    Bubble(
+                      nipWidth: 30,
+                      nipHeight: 10,
+                      color: const Color.fromRGBO(225, 255, 199, 1.0),
+                      margin: const BubbleEdges.only(top: 10),
+                      nip: BubbleNip.leftTop,
+                      child: SizedBox(
+                        height: 90,
+                        child: MyText(widget.translation!, 27),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            if (widget.ttsText != null)
+              SizedBox(
+                height: 180,
+                child: OutlinedButton(
+                    onPressed: () =>
+                        ref.read(ttsProvider).speak(widget.ttsText!),
+                    child: const Icon(Icons.speaker, size: 50)),
+              ),
             gapH32,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,9 @@
+import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
+import 'package:collocation_dictionary/common_widgets/my_hero_widget.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -42,24 +45,28 @@ class _MyPageViewState extends ConsumerState<MyPageView> {
                   child: Column(
                     children: [
                       gapH32,
-                      const Row(
+                      Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Row(
                               children: [
-                                Icon(Icons.house, color: Colors.white),
+                                IconButton(
+                                    onPressed: () => myNavigate(context,
+                                        screen: const LocalHeroPage()),
+                                    icon: const Icon(Icons.house),
+                                    color: Colors.white),
                                 gapW4,
-                                MyText('25', 25),
+                                const MyText('25', 25),
                               ],
                             ),
-                            Row(
+                            const Row(
                               children: [
                                 Icon(Icons.house, color: Colors.white),
                                 gapW4,
                                 MyText('25', 25),
                               ],
                             ),
-                            Row(
+                            const Row(
                               children: [
                                 Icon(Icons.house, color: Colors.white),
                                 gapW4,

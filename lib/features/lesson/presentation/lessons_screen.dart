@@ -18,13 +18,13 @@ class LessonsScreen extends ConsumerWidget {
                 leading: const CircleAvatar(),
                 title: const Text('pronoun (ประธาน)')),
             ListTile(
-                onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson1)),
+                onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson2)),
                 leading: const CircleAvatar(),
                 title: const Text('pronoun (ความเป็นเจ้าของ)')),
-            ListTile(
-                onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson1)),
-                leading: const CircleAvatar(),
-                title: const Text('pronoun (กรรม)')),
+            // ListTile(
+            //     onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson1)),
+            //     leading: const CircleAvatar(),
+            //     title: const Text('pronoun (กรรม)')),
           ],
         ));
   }
