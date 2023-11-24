@@ -23,17 +23,19 @@ List<Widget> pronounLesson1 = [
     answer: 'my',
     translation: 'ปากกาของฉัน',
   ),
-    const DragWidget(
+  const DragWidget(
     shownWord: 'ปากกา',
     choices: ['ของฉัน', 'ของคุณ'],
     answer: 'ของฉัน',
     translation: 'my pen',
+    initStateVoiceText: 'init state voic : my pen',
   ),
   const DragWidget(
     shownWord: 'books',
     choices: ['thier', 'our'],
     answer: 'our',
     ttsText: 'our books',
+    initStateVoiceText: 'our books',
   ),
   const DragWidget(
     shownWord: 'school',
@@ -47,7 +49,6 @@ List<Widget> pronounLesson1 = [
     gapH8,
   ]),
 ];
-
 
 List<Widget> pronounLesson2 = [
   const Column(mainAxisAlignment: MainAxisAlignment.center, children: [

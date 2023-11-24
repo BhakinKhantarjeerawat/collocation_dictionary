@@ -4,7 +4,8 @@ import 'package:collocation_dictionary/common_widgets/my_hero_widget.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/ny_step_progress.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/lesson/presentation/select_lessons_screen.dart';
+import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
+import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,13 +20,12 @@ class ExercisesScreen extends ConsumerStatefulWidget {
 
 class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
   int activePage = 0;
-  late PageController _pageController = PageController();
 
+  late PageController _pageController = PageController();
   void nextPage() {
     _pageController.nextPage(
         duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
   }
-
   @override
   void initState() {
     super.initState();
@@ -41,6 +41,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
               ? const SizedBox()
               : MyPageViewTopPart(
                   totalStep: widget.lesson.length, currentStep: activePage),
+                  // * ^^^ TOP PART ///////// 
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
             child: PageView.builder(
@@ -57,6 +58,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                   return Container(child: widget.lesson[pagePosition]);
                 }),
           ),
+          // * VVV BOTTOM PART ///////// 
           Container(
             padding: const EdgeInsets.all(16),
             height: MediaQuery.of(context).size.height * 0.1,

@@ -24,19 +24,31 @@ class DragWidget extends ConsumerStatefulWidget {
       required this.answer,
       this.imagePath,
       this.translation,
-      this.ttsText});
+      this.ttsText,
+      this.initStateVoiceText
+      });
   final String shownWord;
   final List<String> choices;
   final String answer;
   final String? imagePath;
   final String? translation;
   final String? ttsText;
+  final String? initStateVoiceText;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DragWidgetState();
 }
 
 class _DragWidgetState extends ConsumerState<DragWidget> {
+
+  @override
+  void initState() {
+    if (widget.initStateVoiceText != null ) {
+    ref.read(ttsProvider).speak(widget.initStateVoiceText!);  
+    }
+    super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
