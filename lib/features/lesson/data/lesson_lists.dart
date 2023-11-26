@@ -16,19 +16,23 @@ List<Widget> pronounLesson1 = [
     choices: ['his', 'her', 'our'],
     answer: 'his',
     imagePath: 'assets/images/happiness.png',
+    activePage: 1,
   ),
   const DragWidget(
     shownWord: 'pen',
     choices: ['my', 'your'],
     answer: 'my',
     translation: 'ปากกาของฉัน',
+    activePage: 2,
   ),
   const DragWidget(
     shownWord: 'ปากกา',
     choices: ['ของฉัน', 'ของคุณ'],
     answer: 'ของฉัน',
     translation: 'my pen',
-    initStateVoiceText: 'init state voic : my pen',
+    initStateVoiceText: 'my pen',
+    dragTargetRight: true,
+    activePage: 3,
   ),
   const DragWidget(
     shownWord: 'books',
@@ -36,11 +40,13 @@ List<Widget> pronounLesson1 = [
     answer: 'our',
     ttsText: 'our books',
     initStateVoiceText: 'our books',
+    activePage: 4,
   ),
   const DragWidget(
     shownWord: 'school',
     choices: ['his', 'thier', 'its'],
     answer: 'his',
+    activePage: 5,
   ),
   const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
     MyText('Pronoun Summary', 25),
@@ -50,40 +56,4 @@ List<Widget> pronounLesson1 = [
   ]),
 ];
 
-List<Widget> pronounLesson2 = [
-  const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    MyText('Pronoun', 25),
-    gapH8,
-    MyText('คำสรรพนาม/คำแทนคำนาม', 21),
-    gapH8,
-    MyText('เช่น ฉัน คุณ เขา เธอ พวกเขา พวกเรา มัน', 21),
-  ]),
-  const DragWidget(
-    shownWord: 'pencil',
-    choices: ['his', 'her', 'our'],
-    answer: 'his',
-    // imagePath: 'assets/images/happiness.png',
-  ),
-  const DragWidget(
-    shownWord: 'pen',
-    choices: ['my', 'your'],
-    answer: 'my',
-  ),
-  const DragWidget(
-    shownWord: 'books',
-    choices: ['thier', 'our'],
-    answer: 'our',
-  ),
-  const DragWidget(
-    shownWord: 'school',
-    choices: ['his', 'thier', 'its'],
-    answer: 'his',
-  ),
-  const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    MyText('Pronoun Summary', 25),
-    gapH8,
-    MyText('คะแนน', 21),
-    gapH8,
-    // MyText('${pronounLesson1.length}', 21),
-  ]),
-];
+List<Widget> pronounLesson1Wrong = [];

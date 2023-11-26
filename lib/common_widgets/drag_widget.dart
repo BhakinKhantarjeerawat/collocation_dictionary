@@ -8,6 +8,7 @@ import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/exercises_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,8 +26,9 @@ class DragWidget extends ConsumerStatefulWidget {
       this.imagePath,
       this.translation,
       this.ttsText,
-      this.initStateVoiceText
-      });
+      this.initStateVoiceText,
+      this.dragTargetRight = false,
+      required this.activePage});
   final String shownWord;
   final List<String> choices;
   final String answer;
@@ -34,21 +36,22 @@ class DragWidget extends ConsumerStatefulWidget {
   final String? translation;
   final String? ttsText;
   final String? initStateVoiceText;
+  final bool dragTargetRight;
+  final int activePage;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _DragWidgetState();
 }
 
 class _DragWidgetState extends ConsumerState<DragWidget> {
-
   @override
   void initState() {
-    if (widget.initStateVoiceText != null ) {
-    ref.read(ttsProvider).speak(widget.initStateVoiceText!);  
+    if (widget.initStateVoiceText != null) {
+      ref.read(ttsProvider).speak(widget.initStateVoiceText!);
     }
     super.initState();
-
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +76,8 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                       child: Image.asset('assets/images/happiness.png'),
                     ),
                     InkWell(
-                      onTap: () => ref
-                          .read(ttsProvider)
-                          .speak('test tts in bubble widget ${widget.translation!}'),
+                      onTap: () =>
+                          ref.read(ttsProvider).speak(widget.translation!),
                       child: Bubble(
                         nipWidth: 30,
                         nipHeight: 10,
@@ -116,17 +118,27 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                 ),
               ),
             gapH32,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MyDragTarget(
-                    staticWord: widget.shownWord, answer: widget.answer),
-                SizedBox(
-                    // color: Colors.green,
-                    height: 90,
-                    child: Center(child: MyText(widget.shownWord, 34)))
-              ],
-            ),
+            widget.dragTargetRight
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: 90,
+                          child: Center(child: MyText(widget.shownWord, 34))),
+                      MyDragTarget(
+                          staticWord: widget.shownWord, answer: widget.answer, activePage: widget.activePage),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      MyDragTarget(
+                          staticWord: widget.shownWord, answer: widget.answer, activePage: widget.activePage),
+                      SizedBox(
+                          height: 90,
+                          child: Center(child: MyText(widget.shownWord, 34)))
+                    ],
+                  ),
             gapH64,
             SizedBox(
               width: double.infinity,
@@ -146,9 +158,13 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
 
 class MyDragTarget extends ConsumerStatefulWidget {
   const MyDragTarget(
-      {super.key, required this.staticWord, required this.answer});
+      {super.key,
+      required this.staticWord,
+      required this.answer,
+      required this.activePage});
   final String staticWord;
   final String answer;
+  final int activePage;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _MyDragTargetState();
@@ -194,9 +210,14 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
+          ref
+              .read(wrongAnswerProvider.notifier)
+              .state
+              .add(widget.activePage);
+          debugPrint(ref.watch(wrongAnswerProvider).toString());
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
-            showSnackBarGlobal(context, 'wrong!');
+            showSnackBarGlobal(context, 'wrong!', );
           });
         }
         return data == widget.answer;

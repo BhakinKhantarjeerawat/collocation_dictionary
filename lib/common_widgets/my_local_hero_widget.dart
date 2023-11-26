@@ -26,30 +26,25 @@ class LocalHeroPlayground extends StatefulWidget {
 }
 
 class LocalHeroPlaygroundState extends State<LocalHeroPlayground> {
-  AlignmentGeometry alignment = Alignment.topLeft;
+  // AlignmentGeometry alignment = Alignment.topLeft;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Expanded(
+        const Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Align(
-              alignment: alignment,
-              child: const LocalHero(
-                tag: 'id',
-                child: MyBox(),
-              ),
+            padding: EdgeInsets.all(8),
+            child: LocalHero(
+              tag: 'id',
+              child: MyBox(),
             ),
           ),
         ),
         ElevatedButton(
           onPressed: () {
             setState(() {
-              alignment = alignment == Alignment.topLeft
-                  ? Alignment.bottomRight
-                  : Alignment.topLeft;
+              
             });
           },
           child: const Text('Move'),

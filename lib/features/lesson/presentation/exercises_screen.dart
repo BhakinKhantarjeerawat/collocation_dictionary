@@ -1,14 +1,19 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
-import 'package:collocation_dictionary/common_widgets/my_hero_widget.dart';
+import 'package:collocation_dictionary/common_widgets/my_local_hero_widget.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/ny_step_progress.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
+import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/speech_to_text_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+
+final wrongAnswerProvider = StateProvider<Set<int>>((ref) {
+  return <int>{};
+});
 class ExercisesScreen extends ConsumerStatefulWidget {
   const ExercisesScreen({super.key, required this.lesson});
   final List<Widget> lesson;
@@ -26,6 +31,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
     _pageController.nextPage(
         duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
   }
+
   @override
   void initState() {
     super.initState();
@@ -41,7 +47,7 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
               ? const SizedBox()
               : MyPageViewTopPart(
                   totalStep: widget.lesson.length, currentStep: activePage),
-                  // * ^^^ TOP PART ///////// 
+          // * ^^^ TOP PART /////////
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.7,
             child: PageView.builder(
@@ -58,28 +64,33 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                   return Container(child: widget.lesson[pagePosition]);
                 }),
           ),
-          // * VVV BOTTOM PART ///////// 
+          // * VVV BOTTOM PART /////////
           Container(
             padding: const EdgeInsets.all(16),
             height: MediaQuery.of(context).size.height * 0.1,
             width: double.infinity,
             color: Colors.blueAccent,
             child: ElevatedButton(
+          
               onPressed: (!ref.watch(isDroppedProvider) &&
                       activePage != 0 &&
                       activePage != widget.lesson.length - 1)
                   ? null
                   : () {
                       if (activePage == widget.lesson.length - 1) {
+                        if(pronounLesson1Wrong.isEmpty) {
+                          myNavigate(context, screen:const SelectLessonsScreen());   
+                        }
                         myNavigate(context,
-                            screen: const SelectLessonsScreen());
+                            screen: ExercisesScreen(lesson: pronounLesson1Wrong));
+                        // _pageController.jumpToPage(3);
                       }
                       ref.read(isDroppedProvider.notifier).state = false;
                       nextPage();
                     },
               child: const Text('Next'),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -116,11 +127,15 @@ class MyPageViewTopPart extends ConsumerWidget {
                 const MyText('25', 27),
               ],
             ),
-            const Row(
+            Row(
               children: [
-                Icon(Icons.house, color: Colors.white),
+                IconButton(
+                    onPressed: () {
+                      myNavigate(context, screen: const Stt());
+                    },
+                    icon: const Icon(Icons.house, color: Colors.white)),
                 gapW4,
-                MyText('25', 25),
+                const MyText('25', 25),
               ],
             ),
           ]),

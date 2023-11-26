@@ -23,6 +23,8 @@ dependencies:
   auto_size_text: ^3.0.0
   local_hero: ^0.3.0
   bubble: ^1.2.1
+  speech_to_text: ^6.4.1
+  avatar_glow: ^2.0.2
 
 dev_dependencies:
   flutter_test:

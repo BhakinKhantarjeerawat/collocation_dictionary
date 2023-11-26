@@ -18,11 +18,7 @@ class SelectLessonsScreen extends ConsumerWidget {
                     screen: ExercisesScreen(lesson: pronounLesson1)),
                 leading: const CircleAvatar(),
                 title: const Text('pronoun (ประธาน)')),
-            ListTile(
-                onTap: () => myNavigate(context,
-                    screen: ExercisesScreen(lesson: pronounLesson2)),
-                leading: const CircleAvatar(),
-                title: const Text('pronoun (ความเป็นเจ้าของ)')),
+     
             // ListTile(
             //     onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson1)),
             //     leading: const CircleAvatar(),
