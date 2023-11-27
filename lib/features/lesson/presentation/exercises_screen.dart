@@ -77,14 +77,11 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                   ? null
                   : () {
                       if (activePage == widget.lesson.length - 1) {
-                        if (pronounLesson1Wrongs.isEmpty) {
+                        
                           myNavigate(context,
                               screen: const SelectLessonsScreen());
-                        }
-                        myNavigate(context,
-                            screen:
-                                ExercisesScreen(lesson: pronounLesson1Wrongs.toList()));
-                        // _pageController.jumpToPage(3);
+                        
+                        
                       }
                       ref.read(isDroppedProvider.notifier).state = false;
                       nextPage();

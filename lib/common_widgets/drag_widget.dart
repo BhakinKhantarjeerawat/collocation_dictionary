@@ -211,14 +211,11 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
-        //   ref
-        //       .read(wrongAnswerProvider.notifier)
-        //       .state
-        //       .add(widget.activePage);
-        //   debugPrint(ref.watch(wrongAnswerProvider).toString());
-
-          pronounLesson1Wrongs.add(pronounLesson1[widget.activePage]);
-          debugPrint(pronounLesson1Wrongs.toString());
+          ref
+              .read(wrongAnswerProvider.notifier)
+              .state
+              .add(widget.activePage);
+          debugPrint(ref.watch(wrongAnswerProvider).toString());
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
             showSnackBarGlobal(context, 'wrong!', );

@@ -1,6 +1,7 @@
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/last_exercise_page.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> pronounLesson1 = [
@@ -48,12 +49,7 @@ List<Widget> pronounLesson1 = [
     answer: 'his',
     activePage: 5,
   ),
-  const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    MyText('Pronoun Summary', 25),
-    gapH8,
-    MyText('คะแนน', 21),
-    gapH8,
-  ]),
+  const LastExcercisePage(lesson: 'Pronoun1'),
 ];
 
 Set<Widget> pronounLesson1Wrongs = {};
