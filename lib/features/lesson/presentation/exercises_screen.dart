@@ -77,11 +77,8 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                   ? null
                   : () {
                       if (activePage == widget.lesson.length - 1) {
-                        
-                          myNavigate(context,
-                              screen: const SelectLessonsScreen());
-                        
-                        
+                        myNavigate(context,
+                            screen: const SelectLessonsScreen());
                       }
                       ref.read(isDroppedProvider.notifier).state = false;
                       nextPage();

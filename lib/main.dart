@@ -23,7 +23,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      color: Colors.blue,
+      color: Colors.white,
       theme: ThemeData(
           useMaterial3: true, scaffoldBackgroundColor: Colors.blueAccent),
       home: const IntroScreen(),

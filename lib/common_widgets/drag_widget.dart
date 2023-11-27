@@ -68,30 +68,35 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                 child: Image.asset(widget.imagePath!),
               ),
             if (widget.translation != null)
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Row(
-                  children: [
-                    Expanded(
-                      // height: 180,
-                      child: Image.asset('assets/images/happiness.png'),
-                    ),
-                    InkWell(
-                      onTap: () =>
-                          ref.read(ttsProvider).speak(widget.translation!),
-                      child: Bubble(
-                        nipWidth: 30,
-                        nipHeight: 10,
-                        color: const Color.fromRGBO(225, 255, 199, 1.0),
-                        margin: const BubbleEdges.only(top: 10),
-                        nip: BubbleNip.leftTop,
-                        child: SizedBox(
-                          height: 90,
-                          child: MyText(widget.translation!, 27),
+              Tooltip(
+                message: 'He is a teacher.',
+                onTriggered: ()
+                => ref.read(ttsProvider).speak('He is a teacher'),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        // height: 180,
+                        child: Image.asset('assets/images/happiness.png'),
+                      ),
+                      InkWell(
+                        onTap: () =>
+                            ref.read(ttsProvider).speak(widget.translation!),
+                        child: Bubble(
+                          nipWidth: 30,
+                          nipHeight: 10,
+                          color: const Color.fromRGBO(225, 255, 199, 1.0),
+                          margin: const BubbleEdges.only(top: 10),
+                          nip: BubbleNip.leftTop,
+                          child: SizedBox(
+                            height: 90,
+                            child: MyText(widget.translation!, 27),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             if (widget.ttsText != null)
@@ -99,7 +104,10 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    Expanded(child: Image.asset('assets/images/happiness.png')),
+                    Expanded(child: Tooltip(
+                      message: 'He is our teacher!',
+                      onTriggered: ()=>ref.read(ttsProvider).speak('He is the teacher!'),
+                      child: Image.asset('assets/images/happiness.png'))),
                     Bubble(
                       nipWidth: 30,
                       nipHeight: 10,
