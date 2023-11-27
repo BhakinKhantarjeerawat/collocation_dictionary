@@ -56,4 +56,4 @@ List<Widget> pronounLesson1 = [
   ]),
 ];
 
-List<Widget> pronounLesson1Wrong = [];
+Set<Widget> pronounLesson1Wrongs = {};

@@ -10,10 +10,10 @@ import 'package:collocation_dictionary/features/lesson/presentation/speech_to_te
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 final wrongAnswerProvider = StateProvider<Set<int>>((ref) {
   return <int>{};
 });
+
 class ExercisesScreen extends ConsumerStatefulWidget {
   const ExercisesScreen({super.key, required this.lesson});
   final List<Widget> lesson;
@@ -71,18 +71,19 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
             width: double.infinity,
             color: Colors.blueAccent,
             child: ElevatedButton(
-          
               onPressed: (!ref.watch(isDroppedProvider) &&
                       activePage != 0 &&
                       activePage != widget.lesson.length - 1)
                   ? null
                   : () {
                       if (activePage == widget.lesson.length - 1) {
-                        if(pronounLesson1Wrong.isEmpty) {
-                          myNavigate(context, screen:const SelectLessonsScreen());   
+                        if (pronounLesson1Wrongs.isEmpty) {
+                          myNavigate(context,
+                              screen: const SelectLessonsScreen());
                         }
                         myNavigate(context,
-                            screen: ExercisesScreen(lesson: pronounLesson1Wrong));
+                            screen:
+                                ExercisesScreen(lesson: pronounLesson1Wrongs.toList()));
                         // _pageController.jumpToPage(3);
                       }
                       ref.read(isDroppedProvider.notifier).state = false;

@@ -8,6 +8,7 @@ import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
+import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/exercises_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -210,11 +211,14 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
-          ref
-              .read(wrongAnswerProvider.notifier)
-              .state
-              .add(widget.activePage);
-          debugPrint(ref.watch(wrongAnswerProvider).toString());
+        //   ref
+        //       .read(wrongAnswerProvider.notifier)
+        //       .state
+        //       .add(widget.activePage);
+        //   debugPrint(ref.watch(wrongAnswerProvider).toString());
+
+          pronounLesson1Wrongs.add(pronounLesson1[widget.activePage]);
+          debugPrint(pronounLesson1Wrongs.toString());
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
             showSnackBarGlobal(context, 'wrong!', );
