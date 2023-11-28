@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
+import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,15 +10,19 @@ class ExplainPageText extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+          color: Colors.white, borderRadius: BorderRadius.circular(16)),
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(16),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [MyText(text, 25)]),
+      child: GestureDetector(
+        onTap: () => ref.read(ttsProvider).speak(text),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [MyText(text, 25)]),
+        ),
       ),
     );
   }

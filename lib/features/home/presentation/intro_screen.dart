@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/presentation/cartoon_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
@@ -13,6 +14,8 @@ class IntroScreen extends ConsumerStatefulWidget {
 }
 
 class _IntroScreenState extends ConsumerState<IntroScreen> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

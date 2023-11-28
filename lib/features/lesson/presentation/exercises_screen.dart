@@ -5,7 +5,6 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/ny_step_progress.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
-import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/speech_to_text_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -49,7 +48,9 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
                   totalStep: widget.lesson.length, currentStep: activePage),
           // * ^^^ TOP PART /////////
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: activePage == 0
+                ? MediaQuery.of(context).size.height * 0.8
+                : MediaQuery.of(context).size.height * 0.7,
             child: PageView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: widget.lesson.length,
@@ -71,20 +72,19 @@ class _ExercisesScreenState extends ConsumerState<ExercisesScreen> {
             width: double.infinity,
             color: Colors.blueAccent,
             child: ElevatedButton(
-              onPressed: (!ref.watch(isDroppedProvider) &&
-                      activePage != 0 &&
-                      activePage != widget.lesson.length - 1)
-                  ? null
-                  : () {
-                      if (activePage == widget.lesson.length - 1) {
-                        myNavigate(context,
-                            screen: const SelectLessonsScreen());
-                      }
-                      ref.read(isDroppedProvider.notifier).state = false;
-                      nextPage();
-                    },
-              child: const Text('Next'),
-            ),
+                onPressed: (!ref.watch(isDroppedProvider) &&
+                        activePage != 0 &&
+                        activePage != widget.lesson.length - 1)
+                    ? null
+                    : () {
+                        if (activePage == widget.lesson.length - 1) {
+                          myNavigate(context,
+                              screen: const SelectLessonsScreen());
+                        }
+                        ref.read(isDroppedProvider.notifier).state = false;
+                        nextPage();
+                      },
+                child: Text(activePage == 0 ? 'Do exercises' : 'Next')),
           ),
         ],
       ),

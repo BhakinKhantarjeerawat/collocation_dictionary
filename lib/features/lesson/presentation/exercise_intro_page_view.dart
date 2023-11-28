@@ -1,6 +1,8 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/ny_step_progress.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,12 +40,15 @@ class _ExcerciseIntroPageViewState
           height: MediaQuery.of(context).size.height * 0.1,
           child: Row(
             children: [
+              IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(Icons.close)),
               Expanded(
                   child: MyStepProgress(
-                      totalSteps: widget.explainPages.length,
-                      currentStep: activePage + 1)),
+                      totalSteps: widget.explainPages.length - 1,
+                      currentStep: activePage)),
               gapW8,
-              MyText('$activePage  / ${widget.explainPages.length}', 20),
+              MyText('${activePage + 1}  / ${widget.explainPages.length}', 20),
             ],
           ),
         ),
@@ -61,6 +66,11 @@ class _ExcerciseIntroPageViewState
                 return Container(child: widget.explainPages[pagePosition]);
               }),
         ),
+        DotsIndicator(
+          decorator: const DotsDecorator(),
+          dotsCount: widget.explainPages.length,
+          position: activePage.toDouble(),
+        )
       ],
     );
   }

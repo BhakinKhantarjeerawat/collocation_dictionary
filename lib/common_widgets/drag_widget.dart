@@ -8,7 +8,6 @@ import 'package:collocation_dictionary/common_widgets/show_snackbar.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/data/word_repository.dart';
-import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/exercises_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';

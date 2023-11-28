@@ -1,19 +1,10 @@
 import 'package:collocation_dictionary/common_widgets/drag_widget.dart';
-import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/exercise_intro_page_view.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/explain_page_text.dart';
 import 'package:collocation_dictionary/features/lesson/presentation/last_exercise_page.dart';
 import 'package:flutter/material.dart';
 
 List<Widget> pronounLesson1 = [
-  // const Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-  //   MyText('Pronoun', 25),
-  //   gapH8,
-  //   MyText('คำสรรพนาม/คำแทนคำนาม', 21),
-  //   gapH8,
-  //   MyText('เช่น ฉัน คุณ เขา เธอ พวกเขา พวกเรา มัน', 21),
-  //   gapH32,
-  // ]),
   const ExcerciseIntroPageView(explainPages: [
     ExplainPageText('Pronoun = สรรพนาม'),
     ExplainPageText(
