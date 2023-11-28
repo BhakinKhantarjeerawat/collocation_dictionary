@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/features/home/presentation/intro_screen.dart';
+import 'package:collocation_dictionary/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -24,7 +25,8 @@ class _MainAppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme:
-          ThemeData(useMaterial3: true, scaffoldBackgroundColor: Colors.white),
+          ThemeData(useMaterial3: true, scaffoldBackgroundColor: Colors.white,        
+            fontFamily: FontFamily.comfortaa),
       home: const IntroScreen(),
     );
   }

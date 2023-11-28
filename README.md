@@ -1,5 +1,8 @@
 # collocation_dictionary
 
+CODE GEN:
+dart run build_runner build
+
 todos:
 - AI Image
 - zen mode

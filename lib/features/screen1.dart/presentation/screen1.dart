@@ -1,5 +1,6 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,10 +9,10 @@ class FirstScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
-          _topPart(),
+          const _topPart(),
           SizedBox(
             height: double.infinity,
             child: SingleChildScrollView(
@@ -19,26 +20,26 @@ class FirstScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   gapH32,
-                  Screen1Lesson(
+                  const Screen1Lesson(
                       assetPath: 'assets/images/happiness.png',
                       text: 'First Lesson'),
                   gapH16,
-                  Screen1Lesson(
+                  const Screen1Lesson(
                       assetPath: 'assets/images/happiness.png', text: 'Second'),
                   gapH16,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Screen1Lesson(
-                          assetPath: 'assets/images/happiness.png',
+                          assetPath: Assets.images.happiness.path,
                           text: 'Third Lesson'),
-                      Screen1Lesson(
+                      const Screen1Lesson(
                           assetPath: 'assets/images/happiness.png',
                           text: 'Fourth'),
                     ],
                   ),
                   gapH16,
-                  Screen1Lesson(
+                  const Screen1Lesson(
                       assetPath: 'assets/images/happiness.png', text: 'Second'),
                 ],
               ),
