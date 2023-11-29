@@ -1,5 +1,5 @@
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/screen1.dart/presentation/screen1.dart';
+import 'package:collocation_dictionary/features/screen1/presentation/screen1.dart';
 import 'package:collocation_dictionary/features/screen2/presentation/second2.dart';
 import 'package:collocation_dictionary/features/screen4/presentation/screen4.dart';
 import 'package:collocation_dictionary/features/screen3/presentaion/screen3.dart';
@@ -28,14 +28,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screen[_selectedIndex],
-      bottomNavigationBar: BottomAppBar(
-        elevation: 0,
-        color: Colors.white,
-        child: SizedBox(
-          height: 30,
-          width: double.infinity,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Colors.white,
+              // Color.fromARGB(255, 225, 243, 226),
+              Color.fromARGB(255, 199, 245, 201)
+            ])),
+        child: BottomAppBar(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          // notchMargin: 4,
+          height: 72,
+          elevation: 0,
+          color: Colors.transparent,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -33,7 +33,7 @@ class _MainAppState extends State<MainApp> {
           useMaterial3: true,
           scaffoldBackgroundColor: Colors.white,
           fontFamily: FontFamily.comfortaa),
-      home: const HomeScreen(),
+      home: const IntroScreen(),
     );
   }
 }

@@ -1,5 +1,8 @@
+import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/exercises_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,31 +25,53 @@ class FirstScreen extends ConsumerWidget {
                 children: [
                   gapH64,
                   Screen1LessonWidget(
-                      assetPath: Assets.images.beanStalk.path,
-                      text: 'First Lesson'),
+                    assetPath: Assets.images.beanStalk.path,
+                    text: 'First Lesson',
+                    onPressed: () {
+                      myNavigate(context,
+                          screen: ExercisesScreen(lesson: pronounLesson1));
+                    },
+                  ),
                   gapH16,
                   Screen1LessonWidget(
-                      assetPath: Assets.images.clock.path, text: 'Second'),
+                    assetPath: Assets.images.clock.path,
+                    text: 'Second',
+                    onPressed: () {},
+                  ),
                   gapH16,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Screen1LessonWidget(
-                          assetPath: Assets.images.document.path,
-                          text: 'Third Lesson'),
+                        assetPath: Assets.images.document.path,
+                        text: 'Third Lesson',
+                        onPressed: () {},
+                      ),
                       Screen1LessonWidget(
-                          assetPath: Assets.images.oven.path, text: 'Fourth'),
+                        assetPath: Assets.images.oven.path,
+                        text: 'Fourth',
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                   gapH16,
                   Screen1LessonWidget(
-                      assetPath: Assets.images.ramen.path, text: 'Second'),
+                    assetPath: Assets.images.ramen.path,
+                    text: 'Second',
+                    onPressed: () {},
+                  ),
                   gapH16,
                   Screen1LessonWidget(
-                      assetPath: Assets.images.soy.path, text: 'First Lesson'),
+                    assetPath: Assets.images.soy.path,
+                    text: 'First Lesson',
+                    onPressed: () {},
+                  ),
                   gapH16,
                   Screen1LessonWidget(
-                      assetPath: Assets.images.wind.path, text: 'Second'),
+                    assetPath: Assets.images.wind.path,
+                    text: 'Second',
+                    onPressed: () {},
+                  ),
                 ],
               ),
             ),
@@ -103,14 +128,18 @@ class _TopPart extends StatelessWidget {
 
 class Screen1LessonWidget extends StatelessWidget {
   const Screen1LessonWidget(
-      {super.key, required this.assetPath, required this.text});
+      {super.key,
+      required this.assetPath,
+      required this.text,
+      required this.onPressed});
   final String assetPath;
   final String text;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => debugPrint('lesson Icon is pressed!'),
+      onTap: onPressed,
       child: Column(children: [
         CircleAvatar(
           radius: 55,
@@ -119,7 +148,7 @@ class Screen1LessonWidget extends StatelessWidget {
         ),
         gapH4,
         Center(
-          child: MyText(text, 23, color: Colors.grey.shade700),
+          child: MyText(text, 21, color: Colors.grey.shade700),
         ),
       ]),
     );

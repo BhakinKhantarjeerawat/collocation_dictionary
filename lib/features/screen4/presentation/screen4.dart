@@ -23,6 +23,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         backgroundColor: Colors.white,
         centerTitle: true,
         title: const MyText('Settings', 29),
+        leading: const SizedBox(),
       ),
       body: Column(
         children: [
@@ -30,10 +31,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ListTile(
             leading: const MyText('โหมดกลางคืน', 21),
             trailing: Switch(
-              // thumb color (round icon)
               activeColor: Colors.amber,
               activeTrackColor: Colors.cyan,
-              // inactiveThumbColor: Colors.blueGrey.shade600,
               inactiveTrackColor: Colors.grey.shade400,
               splashRadius: 50.0,
               value: nightMode,
@@ -43,10 +42,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ListTile(
             leading: const MyText('คำอ่านไทย', 21),
             trailing: Switch(
-              // thumb color (round icon)
               activeColor: Colors.amber,
               activeTrackColor: Colors.cyan,
-              // inactiveThumbColor: Colors.blueGrey.shade600,
               inactiveTrackColor: Colors.grey.shade400,
               splashRadius: 50.0,
               value: thaiVoiceText,
@@ -56,14 +53,50 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ListTile(
             leading: const MyText('แบบฝึกหัดพูด', 21),
             trailing: Switch(
-              // thumb color (round icon)
               activeColor: Colors.amber,
               activeTrackColor: Colors.cyan,
-              // inactiveThumbColor: Colors.blueGrey.shade600,
               inactiveTrackColor: Colors.grey.shade400,
               splashRadius: 50.0,
               value: speakingExercise,
               onChanged: (value) => setState(() => speakingExercise = value),
+            ),
+          ),
+          gapH32,
+          const ListTile(
+            leading: MyText('ข้อมูลผู้ใช้', 21),
+          ),
+          const ListTile(
+            leading: MyText('วิธีใช้งาน', 21),
+          ),
+          const ListTile(
+            leading: MyText('เกี่ยวกับเรา', 21),
+          ),
+          gapH32,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Row(
+                children: [
+                  Icon(FontAwesomeIcons.facebook, color: Colors.blue),
+                  gapW16,
+                  MyText('Facebook', 18)
+                ],
+              ),
+            ),
+          ),
+          gapH8,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Row(
+                children: [
+                  Icon(FontAwesomeIcons.line, color: Colors.green),
+                  gapW16,
+                  MyText('Line', 18)
+                ],
+              ),
             ),
           ),
         ],

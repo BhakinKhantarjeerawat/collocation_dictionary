@@ -1,10 +1,141 @@
-import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/home/presentation/cartoon_screen.dart';
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
-import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
+import 'package:collocation_dictionary/common_widgets/my_text.dart';
+import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final introScreenPageController = StateProvider<PageController>((ref) {
+  return PageController();
+});
+
+List<Widget> introScreenList = [
+  const WelcomeScreen(),
+  const PurposeScreen(),
+  const EnglishLevelScreen()
+];
+
+class WelcomeScreen extends ConsumerWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(Assets.images.beanStalk.path),
+          gapH32,
+          const MyText('Welcome to English Collocations', 29),
+          gapH16,
+          MyText(
+            'We hope this app will help you learn English systematically and enjoyably',
+            18,
+            color: Colors.grey.shade700,
+          ),
+          gapH48,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('Next')),
+          ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  myNavigate(context, screen: const HomeScreen());
+                },
+                child: const Text('Start learning immediately')),
+          ),
+        ],
+      ),
+    ));
+  }
+}
+
+class PurposeScreen extends ConsumerWidget {
+  const PurposeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(Assets.images.dragon.path),
+          gapH32,
+          const MyText('What do you want from this app?', 29),
+          gapH32,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('Next')),
+          ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('Start learning immediately')),
+          ),
+        ],
+      ),
+    ));
+  }
+}
+
+class EnglishLevelScreen extends ConsumerWidget {
+  const EnglishLevelScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(Assets.images.document.path),
+            gapH32,
+            const MyText('What is your English level?', 29),
+            gapH32,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {
+                    myNavigate(context, screen: const HomeScreen());
+                  },
+                  child: const Text('Start learning immediately')),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class IntroScreen extends ConsumerStatefulWidget {
   const IntroScreen({super.key});
@@ -14,28 +145,36 @@ class IntroScreen extends ConsumerStatefulWidget {
 }
 
 class _IntroScreenState extends ConsumerState<IntroScreen> {
+  int activePage = 0;
 
+  // late PageController _pageController = PageController();
+  // void nextPage() {
+  //   _pageController.nextPage(
+  //       duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
+  // }
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _pageController = PageController();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueAccent,
-        body: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView(
-            children: [
-              ListTile(
-                  onTap: () => myNavigate(context, screen: const HomeScreen()),
-                  leading: const CircleAvatar(),
-                  title: const Text('home')),
-              gapH16,
-              ListTile(
-                  onTap: () =>
-                      myNavigate(context, screen: const SelectLessonsScreen()),
-                  leading: const CircleAvatar(),
-                  title: const Text('lessons')),
-            ],
-          ),
-        ));
+      body: PageView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: introScreenList.length,
+          pageSnapping: true,
+          controller: ref.watch(introScreenPageController),
+          onPageChanged: (page) {
+            setState(() {
+              activePage = page;
+            });
+          },
+          itemBuilder: (context, pagePosition) {
+            return Container(child: introScreenList[pagePosition]);
+          }),
+    );
   }
 }
