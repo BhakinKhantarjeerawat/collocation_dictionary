@@ -1,3 +1,4 @@
+import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/screen1.dart/presentation/screen1.dart';
 import 'package:collocation_dictionary/features/screen2/presentation/second2.dart';
 import 'package:collocation_dictionary/features/screen4/presentation/screen4.dart';
@@ -16,61 +17,107 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _selectedIndex = 0; //New
 
-//New
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  Widget selectedScreen(index) {
-    switch (index) {
-      case 0:
-        return const FirstScreen();
-      case 1:
-        return const SecondScreen();
-      case 2:
-        return const ThirdScreen();
-      case 3:
-        return const SettingsScreen();
-      default:
-        return const FirstScreen();
-    }
-  }
+  final _screen = [
+    const FirstScreen(),
+    const SecondScreen(),
+    const ThirdScreen(),
+    const SettingsScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: selectedScreen(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blueAccent,
+      body: _screen[_selectedIndex],
+      bottomNavigationBar: BottomAppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
-        type: BottomNavigationBarType.fixed,
-        onTap: (value) => _onItemTapped(value),
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.a,
-                color: _selectedIndex == 0 ? Colors.blueAccent : Colors.grey),
-            label: 'เรียนรู้',
+        color: Colors.white,
+        child: SizedBox(
+          height: 30,
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconBottomBar(
+                  text: "Screen1",
+                  icon: FontAwesomeIcons.a,
+                  selected: _selectedIndex == 0,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 0;
+                    });
+                  },
+                ),
+                IconBottomBar(
+                  text: "Screen2",
+                  icon: FontAwesomeIcons.b,
+                  selected: _selectedIndex == 1,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 1;
+                    });
+                  },
+                ),
+                IconBottomBar(
+                  text: "Screen3",
+                  icon: FontAwesomeIcons.c,
+                  selected: _selectedIndex == 2,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 2;
+                    });
+                  },
+                ),
+                IconBottomBar(
+                  text: "Settings",
+                  icon: Icons.settings,
+                  selected: _selectedIndex == 3,
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = 3;
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.b,
-                color: _selectedIndex == 1 ? Colors.blueAccent : Colors.grey),
-            label: 'กลุ่มคำ',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(FontAwesomeIcons.c,
-                color: _selectedIndex == 2 ? Colors.blueAccent : Colors.grey),
-            label: 'สตอรี่',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings,
-                color: _selectedIndex == 3 ? Colors.blueAccent : Colors.grey),
-            label: 'ตั้งค่า',
-          ),
-        ],
+        ),
       ),
+    );
+  }
+}
+
+class IconBottomBar extends ConsumerWidget {
+  const IconBottomBar(
+      {required this.text,
+      required this.icon,
+      required this.selected,
+      required this.onPressed,
+      super.key});
+  final String text;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        IconButton(
+            onPressed: onPressed,
+            icon: Icon(icon,
+                size: 27,
+                color: selected ? Colors.blueAccent : Colors.grey.shade500)),
+        gapH4,
+        Text(text,
+            style: TextStyle(
+                fontSize: 16,
+                height: .1,
+                fontWeight: FontWeight.w500,
+                color: selected ? Colors.blueAccent : Colors.grey.shade500)),
+        // gapH4,s
+      ],
     );
   }
 }
