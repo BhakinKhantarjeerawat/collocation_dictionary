@@ -4,6 +4,7 @@ import 'package:collocation_dictionary/features/screen4/presentation/screen4.dar
 import 'package:collocation_dictionary/features/screen3/presentaion/screen3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -42,25 +43,31 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       body: selectedScreen(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.blueAccent,
+        elevation: 0,
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         onTap: (value) => _onItemTapped(value),
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.cast_for_education_outlined),
+            icon: Icon(FontAwesomeIcons.a,
+                color: _selectedIndex == 0 ? Colors.blueAccent : Colors.grey),
             label: 'เรียนรู้',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'Camera',
+            icon: Icon(FontAwesomeIcons.b,
+                color: _selectedIndex == 1 ? Colors.blueAccent : Colors.grey),
+            label: 'กลุ่มคำ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
+            icon: Icon(FontAwesomeIcons.c,
+                color: _selectedIndex == 2 ? Colors.blueAccent : Colors.grey),
+            label: 'สตอรี่',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.settings,
+                color: _selectedIndex == 3 ? Colors.blueAccent : Colors.grey),
+            label: 'ตั้งค่า',
           ),
         ],
       ),

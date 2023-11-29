@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bean_stalk.png
+  AssetGenImage get beanStalk =>
+      const AssetGenImage('assets/images/bean_stalk.png');
+
   /// File path: assets/images/bo.png
   AssetGenImage get bo => const AssetGenImage('assets/images/bo.png');
 
@@ -25,6 +29,19 @@ class $AssetsImagesGen {
   AssetGenImage get catBlackAndWhite =>
       const AssetGenImage('assets/images/cat_black_and_white.png');
 
+  /// File path: assets/images/clock.png
+  AssetGenImage get clock => const AssetGenImage('assets/images/clock.png');
+
+  /// File path: assets/images/document-.png
+  AssetGenImage get document =>
+      const AssetGenImage('assets/images/document-.png');
+
+  /// File path: assets/images/dragon.png
+  AssetGenImage get dragon => const AssetGenImage('assets/images/dragon.png');
+
+  /// File path: assets/images/forest.png
+  AssetGenImage get forest => const AssetGenImage('assets/images/forest.png');
+
   /// File path: assets/images/go.png
   AssetGenImage get go => const AssetGenImage('assets/images/go.png');
 
@@ -35,18 +52,43 @@ class $AssetsImagesGen {
   AssetGenImage get happiness =>
       const AssetGenImage('assets/images/happiness.png');
 
+  /// File path: assets/images/hen.png
+  AssetGenImage get hen => const AssetGenImage('assets/images/hen.png');
+
+  /// File path: assets/images/night.png
+  AssetGenImage get night => const AssetGenImage('assets/images/night.png');
+
+  /// File path: assets/images/oven.png
+  AssetGenImage get oven => const AssetGenImage('assets/images/oven.png');
+
+  /// File path: assets/images/ramen.png
+  AssetGenImage get ramen => const AssetGenImage('assets/images/ramen.png');
+
   /// File path: assets/images/ro.png
   AssetGenImage get ro => const AssetGenImage('assets/images/ro.png');
+
+  /// File path: assets/images/road.png
+  AssetGenImage get road => const AssetGenImage('assets/images/road.png');
 
   /// File path: assets/images/rt.png
   AssetGenImage get rt => const AssetGenImage('assets/images/rt.png');
 
+  /// File path: assets/images/soy.png
+  AssetGenImage get soy => const AssetGenImage('assets/images/soy.png');
+
   /// File path: assets/images/stream.png
   AssetGenImage get stream => const AssetGenImage('assets/images/stream.png');
+
+  /// File path: assets/images/treasure.png
+  AssetGenImage get treasure =>
+      const AssetGenImage('assets/images/treasure.png');
 
   /// File path: assets/images/water_fall.png
   AssetGenImage get waterFall =>
       const AssetGenImage('assets/images/water_fall.png');
+
+  /// File path: assets/images/wind.png
+  AssetGenImage get wind => const AssetGenImage('assets/images/wind.png');
 
   /// File path: assets/images/wood.png
   AssetGenImage get wood => const AssetGenImage('assets/images/wood.png');
@@ -59,17 +101,30 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        beanStalk,
         bo,
         bt,
         cat,
         catBlackAndWhite,
+        clock,
+        document,
+        dragon,
+        forest,
         go,
         gt,
         happiness,
+        hen,
+        night,
+        oven,
+        ramen,
         ro,
+        road,
         rt,
+        soy,
         stream,
+        treasure,
         waterFall,
+        wind,
         wood,
         yo,
         yt

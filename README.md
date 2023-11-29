@@ -2,6 +2,7 @@
 
 CODE GEN:
 dart run build_runner build
+dart run flutter_native_splash:create
 
 todos:
 - AI Image
@@ -19,3 +20,5 @@ todos:
 // TODO: similar Thai voice โอน own
 // TODO: move list of items into drag target
 // TODO: tour
+// TODO: draggable list tile
+// TODO: animatedList

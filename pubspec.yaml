@@ -28,6 +28,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   dots_indicator: ^2.1.2
   flutter_gen: ^5.3.2
+  flutter_native_splash: ^2.3.6
 
 
 dev_dependencies:
@@ -68,3 +69,10 @@ flutter:
     #   fonts:
     #     - asset: fonts/Prompt-Regular.ttf
   
+flutter_native_splash:
+  android: true
+  ios: true
+  background_image: "assets/images/forest.png"
+  ios_content_mode: center
+
+ 
