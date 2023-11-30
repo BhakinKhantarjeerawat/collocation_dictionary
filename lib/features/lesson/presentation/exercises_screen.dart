@@ -5,7 +5,6 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/common_widgets/ny_step_progress.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/select_lessons_screen.dart';
-import 'package:collocation_dictionary/features/lesson/presentation/speech_to_text_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -126,7 +125,7 @@ class MyPageViewTopPart extends ConsumerWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      myNavigate(context, screen: const Stt());
+            
                     },
                     icon: const Icon(Icons.house, color: Colors.white)),
                 gapW4,

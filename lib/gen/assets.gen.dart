@@ -22,12 +22,19 @@ class $AssetsImagesGen {
   /// File path: assets/images/bt.png
   AssetGenImage get bt => const AssetGenImage('assets/images/bt.png');
 
+  /// File path: assets/images/bulb.png
+  AssetGenImage get bulb => const AssetGenImage('assets/images/bulb.png');
+
   /// File path: assets/images/cat.png
   AssetGenImage get cat => const AssetGenImage('assets/images/cat.png');
 
   /// File path: assets/images/cat_black_and_white.png
   AssetGenImage get catBlackAndWhite =>
       const AssetGenImage('assets/images/cat_black_and_white.png');
+
+  /// File path: assets/images/clipboard.png
+  AssetGenImage get clipboard =>
+      const AssetGenImage('assets/images/clipboard.png');
 
   /// File path: assets/images/clock.png
   AssetGenImage get clock => const AssetGenImage('assets/images/clock.png');
@@ -55,11 +62,20 @@ class $AssetsImagesGen {
   /// File path: assets/images/hen.png
   AssetGenImage get hen => const AssetGenImage('assets/images/hen.png');
 
+  /// File path: assets/images/intro.png
+  AssetGenImage get intro => const AssetGenImage('assets/images/intro.png');
+
+  /// File path: assets/images/list.png
+  AssetGenImage get list => const AssetGenImage('assets/images/list.png');
+
   /// File path: assets/images/night.png
   AssetGenImage get night => const AssetGenImage('assets/images/night.png');
 
   /// File path: assets/images/oven.png
   AssetGenImage get oven => const AssetGenImage('assets/images/oven.png');
+
+  /// File path: assets/images/quiz.png
+  AssetGenImage get quiz => const AssetGenImage('assets/images/quiz.png');
 
   /// File path: assets/images/ramen.png
   AssetGenImage get ramen => const AssetGenImage('assets/images/ramen.png');
@@ -78,6 +94,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/stream.png
   AssetGenImage get stream => const AssetGenImage('assets/images/stream.png');
+
+  /// File path: assets/images/summary.png
+  AssetGenImage get summary => const AssetGenImage('assets/images/summary.png');
 
   /// File path: assets/images/treasure.png
   AssetGenImage get treasure =>
@@ -104,8 +123,10 @@ class $AssetsImagesGen {
         beanStalk,
         bo,
         bt,
+        bulb,
         cat,
         catBlackAndWhite,
+        clipboard,
         clock,
         document,
         dragon,
@@ -114,14 +135,18 @@ class $AssetsImagesGen {
         gt,
         happiness,
         hen,
+        intro,
+        list,
         night,
         oven,
+        quiz,
         ramen,
         ro,
         road,
         rt,
         soy,
         stream,
+        summary,
         treasure,
         waterFall,
         wind,

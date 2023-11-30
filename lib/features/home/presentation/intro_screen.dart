@@ -1,7 +1,9 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
+import 'package:collocation_dictionary/common_widgets/gradient_button.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+import 'package:collocation_dictionary/features/test_hero_animation.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +12,7 @@ final introScreenPageController = StateProvider<PageController>((ref) {
   return PageController();
 });
 
-List<Widget> introScreenList = [
+List<Widget> introAppScreens = [
   const WelcomeScreen(),
   const PurposeScreen(),
   const EnglishLevelScreen()
@@ -51,11 +53,12 @@ class WelcomeScreen extends ConsumerWidget {
           gapH16,
           SizedBox(
             width: MediaQuery.of(context).size.width - 32,
-            child: ElevatedButton(
-                onPressed: () {
-                  myNavigate(context, screen: const HomeScreen());
-                },
-                child: const Text('Start learning immediately')),
+            child: GradientButtonFb4(
+              text: 'Start learning immediately',
+              onPressed: () {
+                myNavigate(context, screen: const TestHeroAnimation());
+              },
+            ),
           ),
         ],
       ),
@@ -87,7 +90,7 @@ class PurposeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('Next')),
+                child: const Text('Support study')),
           ),
           gapH16,
           SizedBox(
@@ -98,8 +101,19 @@ class PurposeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('Start learning immediately')),
+                child: const Text('For jobs')),
           ),
+          // gapH32,
+          // SizedBox(
+          //   width: MediaQuery.of(context).size.width - 32,
+          //   child: GradientButtonFb4(
+          //       onPressed: () {
+          //         ref.read(introScreenPageController).nextPage(
+          //             duration: const Duration(milliseconds: 500),
+          //             curve: Curves.easeIn);
+          //       },
+          //       text: 'Next'),
+          // ),
         ],
       ),
     ));
@@ -125,10 +139,40 @@ class EnglishLevelScreen extends ConsumerWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width - 32,
               child: ElevatedButton(
+                  onPressed: () {}, child: const Text('Know nothing')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {}, child: const Text('Know something')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('Know vocabs and grammars')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {
+                    ref.read(introScreenPageController).nextPage(
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeIn);
+                  },
+                  child: const Text('Just review (Advanced)')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: GradientButtonFb4(
+                  text: 'Start learning immediately',
                   onPressed: () {
                     myNavigate(context, screen: const HomeScreen());
-                  },
-                  child: const Text('Start learning immediately')),
+                  }),
             ),
           ],
         ),
@@ -164,7 +208,7 @@ class _IntroScreenState extends ConsumerState<IntroScreen> {
     return Scaffold(
       body: PageView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: introScreenList.length,
+          itemCount: introAppScreens.length,
           pageSnapping: true,
           controller: ref.watch(introScreenPageController),
           onPageChanged: (page) {
@@ -173,7 +217,7 @@ class _IntroScreenState extends ConsumerState<IntroScreen> {
             });
           },
           itemBuilder: (context, pagePosition) {
-            return Container(child: introScreenList[pagePosition]);
+            return Container(child: introAppScreens[pagePosition]);
           }),
     );
   }

@@ -1,8 +1,7 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/lesson/data/lesson_lists.dart';
-import 'package:collocation_dictionary/features/lesson/presentation/exercises_screen.dart';
+import 'package:collocation_dictionary/features/lesson/presentation/exercise_intro_page.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,7 +28,7 @@ class FirstScreen extends ConsumerWidget {
                     text: 'First Lesson',
                     onPressed: () {
                       myNavigate(context,
-                          screen: ExercisesScreen(lesson: pronounLesson1));
+                          screen: ExcerciseIntroPage(explainPages: explainPages));
                     },
                   ),
                   gapH16,

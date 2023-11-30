@@ -28,70 +28,61 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screen[_selectedIndex],
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-              Colors.white,
-              // Color.fromARGB(255, 225, 243, 226),
-              Color.fromARGB(255, 199, 245, 201)
-            ])),
-        child: BottomAppBar(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          // notchMargin: 4,
-          height: 72,
-          elevation: 0,
-          color: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconBottomBar(
-                  text: "Screen1",
-                  icon: FontAwesomeIcons.a,
-                  selected: _selectedIndex == 0,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 0;
-                    });
-                  },
-                ),
-                IconBottomBar(
-                  text: "Screen2",
-                  icon: FontAwesomeIcons.b,
-                  selected: _selectedIndex == 1,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 1;
-                    });
-                  },
-                ),
-                IconBottomBar(
-                  text: "Screen3",
-                  icon: FontAwesomeIcons.c,
-                  selected: _selectedIndex == 2,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 2;
-                    });
-                  },
-                ),
-                IconBottomBar(
-                  text: "Settings",
-                  icon: Icons.settings,
-                  selected: _selectedIndex == 3,
-                  onPressed: () {
-                    setState(() {
-                      _selectedIndex = 3;
-                    });
-                  },
-                ),
-              ],
+      bottomNavigationBar: BottomAppBar(
+    
+        // notchMargin: 4,
+        height: 70,
+        elevation: 0,
+        color: Colors.transparent,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // gapW4,
+            IconBottomBar(
+              text: "Screen1",
+              icon: FontAwesomeIcons.a,
+              selected: _selectedIndex == 0,
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 0;
+                });
+              },
             ),
-          ),
+                  gapW8,
+            IconBottomBar(
+              text: "Screen2",
+              icon: FontAwesomeIcons.b,
+              selected: _selectedIndex == 1,
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 1;
+                });
+              },
+            ),
+                  gapW8,
+            IconBottomBar(
+              text: "Screen3",
+              icon: FontAwesomeIcons.c,
+              selected: _selectedIndex == 2,
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 2;
+                });
+              },
+            ),
+                  gapW8,
+            IconBottomBar(
+              text: "Settings",
+              icon: Icons.settings,
+              selected: _selectedIndex == 3,
+              onPressed: () {
+                setState(() {
+                  _selectedIndex = 3;
+                });
+              },
+            ),
+            // gapW4,
+          ],
         ),
       ),
     );
@@ -111,23 +102,28 @@ class IconBottomBar extends ConsumerWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        IconButton(
-            onPressed: onPressed,
-            icon: Icon(icon,
-                size: 27,
-                color: selected ? Colors.blueAccent : Colors.grey.shade500)),
-        gapH4,
-        Text(text,
-            style: TextStyle(
-                fontSize: 16,
-                height: .1,
-                fontWeight: FontWeight.w500,
-                color: selected ? Colors.blueAccent : Colors.grey.shade500)),
-        // gapH4,s
-      ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: SizedBox(
+        height: 70,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon,
+                size: 23,
+                color: selected ? Colors.blueAccent : Colors.grey.shade500),
+            gapH16,
+            Text(text,
+                style: TextStyle(
+                    fontSize: 14,
+                    height: .1,
+                    fontWeight: FontWeight.w500,
+                    color:
+                        selected ? Colors.blueAccent : Colors.grey.shade500)),
+            gapH4
+          ],
+        ),
+      ),
     );
   }
 }
