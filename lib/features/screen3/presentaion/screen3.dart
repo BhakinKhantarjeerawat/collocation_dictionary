@@ -2,8 +2,8 @@ import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ThirdScreen extends ConsumerWidget {
-  const ThirdScreen({super.key});
+class Screen3 extends ConsumerWidget {
+  const Screen3({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

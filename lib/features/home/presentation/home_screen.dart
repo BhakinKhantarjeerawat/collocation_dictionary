@@ -18,9 +18,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _selectedIndex = 0; //New
 
   final _screen = [
-    const FirstScreen(),
-    const SecondScreen(),
-    const ThirdScreen(),
+    const Screen1(),
+    const Second2(),
+    const Screen3(),
     const SettingsScreen()
   ];
 

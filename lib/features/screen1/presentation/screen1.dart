@@ -1,15 +1,16 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_items.dart';
+import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters.dart';
+import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/topic_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class FirstScreen extends ConsumerWidget {
-  const FirstScreen({super.key});
+class Screen1 extends ConsumerWidget {
+  const Screen1({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,9 +25,9 @@ class FirstScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   gapH64,
-                  Screen1LessonWidget(
+                  Screen1TopicWidget(
                     assetPath: Assets.images.beanStalk.path,
-                    text: 'First Lesson',
+                    text: 'Pronoun',
                     onPressed: () {
                       myNavigate(
                         context,
@@ -34,27 +35,37 @@ class FirstScreen extends ConsumerWidget {
                           cartoonVoicText: 'Hi Cookie bar',
                           cartoonImagePath: Assets.images.beanStalk.path,
                           topicName: 'Pronoun',
-                          chapterList: pronounChapters,
+                          chapterList: pronounChaptersList,
                         ),
                       );
                     },
                   ),
                   gapH16,
-                  Screen1LessonWidget(
+                  Screen1TopicWidget(
                     assetPath: Assets.images.clock.path,
-                    text: 'Second',
-                    onPressed: () {},
+                    text: 'Noun',
+                    onPressed: () {
+                      myNavigate(
+                        context,
+                        screen: TopicScreen(
+                          cartoonVoicText: 'How are you? dek bar',
+                          cartoonImagePath: Assets.images.dragon.path,
+                          topicName: 'Noun',
+                          chapterList: nounChapters,
+                        ),
+                      );
+                    },
                   ),
                   gapH16,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Screen1LessonWidget(
+                      Screen1TopicWidget(
                         assetPath: Assets.images.document.path,
                         text: 'Third Lesson',
                         onPressed: () {},
                       ),
-                      Screen1LessonWidget(
+                      Screen1TopicWidget(
                         assetPath: Assets.images.oven.path,
                         text: 'Fourth',
                         onPressed: () {},
@@ -62,19 +73,19 @@ class FirstScreen extends ConsumerWidget {
                     ],
                   ),
                   gapH16,
-                  Screen1LessonWidget(
+                  Screen1TopicWidget(
                     assetPath: Assets.images.ramen.path,
                     text: 'Second',
                     onPressed: () {},
                   ),
                   gapH16,
-                  Screen1LessonWidget(
+                  Screen1TopicWidget(
                     assetPath: Assets.images.soy.path,
                     text: 'First Lesson',
                     onPressed: () {},
                   ),
                   gapH16,
-                  Screen1LessonWidget(
+                  Screen1TopicWidget(
                     assetPath: Assets.images.wind.path,
                     text: 'Second',
                     onPressed: () {},
@@ -133,8 +144,8 @@ class _TopPart extends StatelessWidget {
   }
 }
 
-class Screen1LessonWidget extends StatelessWidget {
-  const Screen1LessonWidget(
+class Screen1TopicWidget extends StatelessWidget {
+  const Screen1TopicWidget(
       {super.key,
       required this.assetPath,
       required this.text,
@@ -155,7 +166,7 @@ class Screen1LessonWidget extends StatelessWidget {
         ),
         gapH4,
         Center(
-          child: MyText(text, 21, color: Colors.grey.shade700),
+          child: MyText(text, 18, color: Colors.grey.shade700),
         ),
       ]),
     );

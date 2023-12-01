@@ -22,12 +22,9 @@ class ChapterWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       onTap: () {
-        myNavigatePop(context, screen: navigateTo);
+        myNavigate(context, screen: navigateTo);
       },
-      leading: CircleAvatar(
-          backgroundColor: Colors.blueAccent,
-          radius: 30,
-          child: SizedBox(height: 50, child: Image.asset(imagePath))),
+      leading: Image.asset(imagePath),
       title: Align(alignment: Alignment.topLeft, child: MyText(title, 21)),
     );
   }

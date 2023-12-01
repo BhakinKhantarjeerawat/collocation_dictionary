@@ -3,15 +3,24 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
+import 'package:collocation_dictionary/features/topics/chapter_widget.dart';
+import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
+import 'package:collocation_dictionary/features/topics/pronoun/presentation/chapters_intro/pronoun0.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TopicScreen extends ConsumerStatefulWidget {
-  const TopicScreen({super.key, required this.cartoonVoicText, required this.cartoonImagePath, required this.topicName, required this.chapterList});
+  const TopicScreen(
+      {super.key,
+      required this.cartoonVoicText,
+      required this.cartoonImagePath,
+      required this.topicName,
+      required this.chapterList});
   final String cartoonVoicText;
   final String cartoonImagePath;
   final String topicName;
-  final List<Widget> chapterList;
+  final List<ChapterWidget> chapterList;
+
   @override
   ConsumerState<TopicScreen> createState() => _TopicScreenState();
 }
@@ -67,7 +76,16 @@ class _TopicScreenState extends ConsumerState<TopicScreen> {
               delegate: SliverChildBuilderDelegate(
                 (_, int index) {
                   return Column(
-                    children: [widget.chapterList[index], gapH32],
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            debugPrint('aaa');
+                            myNavigate(context,
+                                screen: widget.chapterList[index].navigateTo);
+                          },
+                          child: widget.chapterList[index]),
+                      gapH32
+                    ],
                   );
                 },
                 childCount: widget.chapterList.length,

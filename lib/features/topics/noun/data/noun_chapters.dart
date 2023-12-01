@@ -3,25 +3,29 @@ import 'package:collocation_dictionary/features/topics/chapter_widget.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
-List<Widget> pronounChapters = [
+List<ChapterWidget> nounChapters = [
   ChapterWidget(
     imagePath: Assets.images.intro.path,
     title: 'พื้นฐาน',
+    navigateTo: const Text('unimplemented yet'),
+  ),
+  ChapterWidget(
+    imagePath: Assets.images.list.path,
+    title: 'จำนวนหนึ่งหรือมากกว่าหนึ่ง',
     navigateTo: const HomeScreen(),
   ),
   ChapterWidget(
     imagePath: Assets.images.list.path,
-    title: 'แบบธรรมดา',
-    navigateTo: const HomeScreen(),
-  ),
-  ChapterWidget(
-    imagePath: Assets.images.list.path,
-    title: 'แบบแสดงความเป็นเจ้าของ',
+    title: 'นามเฉพาะ vs นามทั่วไป',
     navigateTo: const HomeScreen(),
   ),
   ChapterWidget(
       imagePath: Assets.images.list.path,
-      title: 'แบบถูกกระทำ',
+      title: 'a, an, the',
+      navigateTo: const HomeScreen()),
+  ChapterWidget(
+      imagePath: Assets.images.list.path,
+      title: 'นามนับได้ vs นับไม่ได้',
       navigateTo: const HomeScreen()),
   ChapterWidget(
       imagePath: Assets.images.summary.path,
