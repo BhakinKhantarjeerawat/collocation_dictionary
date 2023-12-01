@@ -21,7 +21,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     const Screen1(),
     const Second2(),
     const Screen3(),
-    const SettingsScreen()
+    const Screen4()
   ];
 
   @override

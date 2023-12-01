@@ -1,7 +1,7 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters.dart';
+import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/topic_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
@@ -51,7 +51,7 @@ class Screen1 extends ConsumerWidget {
                           cartoonVoicText: 'How are you? dek bar',
                           cartoonImagePath: Assets.images.dragon.path,
                           topicName: 'Noun',
-                          chapterList: nounChapters,
+                          chapterList: nounChaptersList,
                         ),
                       );
                     },

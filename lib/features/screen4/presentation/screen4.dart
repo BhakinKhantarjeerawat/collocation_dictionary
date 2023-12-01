@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SettingsScreen extends ConsumerStatefulWidget {
-  const SettingsScreen({super.key});
+class Screen4 extends ConsumerStatefulWidget {
+  const Screen4({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _SettingsScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _Screen4State();
 }
 
-class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+class _Screen4State extends ConsumerState<Screen4> {
   bool nightMode = false;
   bool thaiVoiceText = true;
   bool speakingExercise = true;

@@ -4,8 +4,6 @@ import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/topics/chapter_widget.dart';
-import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
-import 'package:collocation_dictionary/features/topics/pronoun/presentation/chapters_intro/pronoun0.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
