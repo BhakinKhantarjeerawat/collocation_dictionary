@@ -31,6 +31,8 @@ dependencies:
   flutter_native_splash: ^2.3.6
   easy_stepper: ^0.8.2
   percent_indicator: ^4.2.3
+  wave: ^0.2.2
+  gap: ^3.0.1
 
 
 dev_dependencies:
@@ -74,7 +76,7 @@ flutter:
 flutter_native_splash:
   android: true
   ios: true
-  background_image: "assets/images/forest.png"
+  background_image: "assets/images/appintro.png"
   ios_content_mode: center
 
  

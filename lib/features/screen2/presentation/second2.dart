@@ -7,9 +7,7 @@ class SecondScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return const Scaffold(
-      body: Center(
-        child: Text('Second Screen'),
-      ),
+      body: Center(child: Text('screen2')),
     );
   }
 }

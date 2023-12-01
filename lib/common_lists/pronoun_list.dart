@@ -1,7 +1,6 @@
 import 'package:collocation_dictionary/features/lesson/models/word.dart';
 import 'package:collocation_dictionary/features/home/models/word_type.dart';
 
-
 List<Word> pronounList = [
   Word(
       word: 'his',
@@ -30,34 +29,33 @@ List<Word> pronounList = [
       meaning: 'ของคุณ (คุณคนเดียวก็ได้ พวกคุณก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-            imagePath: 'assets/images/happiness.png'
-
-      ),
+      imagePath: 'assets/images/happiness.png'),
   Word(
       word: 'thier',
       sound: 'แด',
       meaning: 'ของพวกเขา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-            imagePath: 'assets/images/happiness.png'
-
-      ),
+      imagePath: 'assets/images/happiness.png'),
   Word(
       word: 'our',
       sound: 'อาว',
       meaning: 'ของพวกเรา (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-            imagePath: 'assets/images/happiness.png'
-      ),
-      Word(
+      imagePath: 'assets/images/happiness.png'),
+  Word(
       word: 'its',
       sound: 'อิทเซอะ',
       meaning: 'ของมัน (ชิ้นเดียว หรือ หลายชิ้น ก็ได้)',
       wordType: WordType.pronoun,
       collocations: [],
-            imagePath: 'assets/images/happiness.png'
-
-      ),
-  
+      imagePath: 'assets/images/happiness.png'),
+  Word(
+      word: 'pronoun',
+      sound: 'โพร นาว',
+      meaning: 'คำสรรพนาม',
+      wordType: WordType.pronoun,
+      collocations: ['possesive pronoun', 'object pronoun'],
+      imagePath: 'assets/images/happiness.png'),
 ];

@@ -10,3 +10,24 @@ void myNavigate(context, {required screen}) {
     ),
   );
 }
+
+void myNavigatePop(context, {required screen}) {
+  Navigator.pop(
+    context,
+    PageTransition(
+      duration: const Duration(seconds: 5),
+      type: PageTransitionType.rightToLeftWithFade,
+      child: screen,
+    ),
+  );
+}
+
+void myNavigateTop(context, {required screen}) {
+  Navigator.push(
+    context,
+    PageTransition(
+      type: PageTransitionType.bottomToTop,
+      child: screen,
+    ),
+  );
+}

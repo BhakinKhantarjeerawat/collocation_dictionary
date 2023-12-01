@@ -29,9 +29,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       body: _screen[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
-    
         // notchMargin: 4,
-        height: 70,
+        height: 81,
         elevation: 0,
         color: Colors.transparent,
         child: Row(
@@ -48,7 +47,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 });
               },
             ),
-                  gapW8,
+            gapW8,
             IconBottomBar(
               text: "Screen2",
               icon: FontAwesomeIcons.b,
@@ -59,7 +58,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 });
               },
             ),
-                  gapW8,
+            gapW8,
             IconBottomBar(
               text: "Screen3",
               icon: FontAwesomeIcons.c,
@@ -70,7 +69,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 });
               },
             ),
-                  gapW8,
+            gapW8,
             IconBottomBar(
               text: "Settings",
               icon: Icons.settings,
@@ -102,27 +101,25 @@ class IconBottomBar extends ConsumerWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: SizedBox(
-        height: 70,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon,
-                size: 23,
-                color: selected ? Colors.blueAccent : Colors.grey.shade500),
-            gapH16,
-            Text(text,
-                style: TextStyle(
-                    fontSize: 14,
-                    height: .1,
-                    fontWeight: FontWeight.w500,
-                    color:
-                        selected ? Colors.blueAccent : Colors.grey.shade500)),
-            gapH4
-          ],
-        ),
+    return SizedBox(
+      // height: 70,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          IconButton(
+              onPressed: onPressed,
+              icon: Icon(icon,
+                  size: 23,
+                  color: selected ? Colors.blueAccent : Colors.grey.shade500)),
+          gapH4,
+          Text(text,
+              style: TextStyle(
+                  fontSize: 14,
+                  height: .1,
+                  fontWeight: FontWeight.w500,
+                  color: selected ? Colors.blueAccent : Colors.grey.shade500)),
+          gapH4
+        ],
       ),
     );
   }

@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/appintro.png
+  AssetGenImage get appintro =>
+      const AssetGenImage('assets/images/appintro.png');
+
   /// File path: assets/images/bean_stalk.png
   AssetGenImage get beanStalk =>
       const AssetGenImage('assets/images/bean_stalk.png');
@@ -46,6 +50,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/dragon.png
   AssetGenImage get dragon => const AssetGenImage('assets/images/dragon.png');
 
+  /// File path: assets/images/en_levels.png
+  AssetGenImage get enLevels =>
+      const AssetGenImage('assets/images/en_levels.png');
+
   /// File path: assets/images/forest.png
   AssetGenImage get forest => const AssetGenImage('assets/images/forest.png');
 
@@ -74,6 +82,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/oven.png
   AssetGenImage get oven => const AssetGenImage('assets/images/oven.png');
 
+  /// File path: assets/images/presentation.png
+  AssetGenImage get presentation =>
+      const AssetGenImage('assets/images/presentation.png');
+
   /// File path: assets/images/quiz.png
   AssetGenImage get quiz => const AssetGenImage('assets/images/quiz.png');
 
@@ -98,6 +110,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/summary.png
   AssetGenImage get summary => const AssetGenImage('assets/images/summary.png');
 
+  /// File path: assets/images/target.png
+  AssetGenImage get target => const AssetGenImage('assets/images/target.png');
+
   /// File path: assets/images/treasure.png
   AssetGenImage get treasure =>
       const AssetGenImage('assets/images/treasure.png');
@@ -120,6 +135,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        appintro,
         beanStalk,
         bo,
         bt,
@@ -130,6 +146,7 @@ class $AssetsImagesGen {
         clock,
         document,
         dragon,
+        enLevels,
         forest,
         go,
         gt,
@@ -139,6 +156,7 @@ class $AssetsImagesGen {
         list,
         night,
         oven,
+        presentation,
         quiz,
         ramen,
         ro,
@@ -147,6 +165,7 @@ class $AssetsImagesGen {
         soy,
         stream,
         summary,
+        target,
         treasure,
         waterFall,
         wind,

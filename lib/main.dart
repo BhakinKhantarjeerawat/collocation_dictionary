@@ -1,4 +1,3 @@
-import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/home/presentation/intro_screen.dart';
 import 'package:collocation_dictionary/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';

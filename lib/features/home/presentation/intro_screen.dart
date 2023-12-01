@@ -3,7 +3,6 @@ import 'package:collocation_dictionary/common_widgets/gradient_button.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
-import 'package:collocation_dictionary/features/test_hero_animation.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +29,11 @@ class WelcomeScreen extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(Assets.images.beanStalk.path),
+          CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: MediaQuery.of(context).size.width / 3,
+              child: Image.asset(Assets.images.beanStalk.path,
+                  fit: BoxFit.cover)),
           gapH32,
           const MyText('Welcome to English Collocations', 29),
           gapH16,
@@ -56,7 +59,7 @@ class WelcomeScreen extends ConsumerWidget {
             child: GradientButtonFb4(
               text: 'Start learning immediately',
               onPressed: () {
-                myNavigate(context, screen: const TestHeroAnimation());
+                myNavigate(context, screen: const HomeScreen());
               },
             ),
           ),
@@ -68,6 +71,7 @@ class WelcomeScreen extends ConsumerWidget {
 
 class PurposeScreen extends ConsumerWidget {
   const PurposeScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -78,7 +82,10 @@ class PurposeScreen extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset(Assets.images.dragon.path),
+          CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: MediaQuery.of(context).size.width / 3,
+              child: Image.asset(Assets.images.target.path)),
           gapH32,
           const MyText('What do you want from this app?', 29),
           gapH32,
@@ -132,7 +139,10 @@ class EnglishLevelScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(Assets.images.document.path),
+            CircleAvatar(
+                backgroundColor: Colors.transparent,
+                radius: MediaQuery.of(context).size.width / 3,
+                child: Image.asset(Assets.images.enLevels.path)),
             gapH32,
             const MyText('What is your English level?', 29),
             gapH32,

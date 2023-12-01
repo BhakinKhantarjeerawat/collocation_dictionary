@@ -1,7 +1,8 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
-import 'package:collocation_dictionary/features/lesson/presentation/exercise_intro_page.dart';
+import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_items.dart';
+import 'package:collocation_dictionary/features/topics/topic_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,8 +28,15 @@ class FirstScreen extends ConsumerWidget {
                     assetPath: Assets.images.beanStalk.path,
                     text: 'First Lesson',
                     onPressed: () {
-                      myNavigate(context,
-                          screen: ExcerciseIntroPage(explainPages: explainPages));
+                      myNavigate(
+                        context,
+                        screen: TopicScreen(
+                          cartoonVoicText: 'Hi Cookie bar',
+                          cartoonImagePath: Assets.images.beanStalk.path,
+                          topicName: 'Pronoun',
+                          chapterList: pronounChapters,
+                        ),
+                      );
                     },
                   ),
                   gapH16,
