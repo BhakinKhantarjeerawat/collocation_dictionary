@@ -1,14 +1,14 @@
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/topics/chapter_explain_page.dart';
 import 'package:collocation_dictionary/features/topics/chapter_widget.dart';
-import 'package:collocation_dictionary/features/topics/pronoun/presentation/chapters_intro/chapter_explain_page_view.dart';
+import 'package:collocation_dictionary/features/topics/chapter_page_view.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 
 List<ChapterWidget> nounChaptersList = [
   ChapterWidget(
     imagePath: Assets.images.intro.path,
     title: 'พื้นฐาน',
-      navigateTo: ChapterExplainPageView(chapters: noun0List),
+    navigateTo: ChapterPageView(chapters: noun0List),
   ),
   ChapterWidget(
     imagePath: Assets.images.list.path,
@@ -39,16 +39,15 @@ List<ChapterWidget> nounChaptersList = [
   ),
 ];
 
-
 List<ChapterExplainPage> noun0List = [
   const ChapterExplainPage(
       title: 'Basics',
-      explanations:
+      explain1:
           'คำนาม \nคือ\nคำที่ใช้เรียกคนสัตว์หรือสิ่งของ เช่น หมา แมว ตะกล้า เงิน พวกนก จอห์น',
       pageNumber: 0),
   const ChapterExplainPage(
       title: 'ประเภท',
-      explanations:
+      explain1:
           'คำนาม แบ่งได้หลายแบบ  แบ่งตามจำนวนได้เป็น แบบเอกพจน์และพหูพจน์  แบ่งตามการนับได้นับไม่ได้โดยที่คำนามนับไม่ได้เกือบทั้งหมดมักเป็นเอกพจน์',
       pageNumber: 0),
 ];

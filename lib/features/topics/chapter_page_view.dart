@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ChapterExplainPageView extends ConsumerStatefulWidget {
-  const ChapterExplainPageView({super.key, required this.chapters});
+class ChapterPageView extends ConsumerStatefulWidget {
+  const ChapterPageView({super.key, required this.chapters});
   final List<Widget> chapters;
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _ChapterExplainPageViewState();
+      _ChapterPageViewState();
 }
 
-class _ChapterExplainPageViewState
-    extends ConsumerState<ChapterExplainPageView> {
+class _ChapterPageViewState extends ConsumerState<ChapterPageView> {
   int activePage = 0;
 
   late PageController _pageController = PageController();

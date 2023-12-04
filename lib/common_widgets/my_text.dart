@@ -10,11 +10,13 @@ class MyText extends ConsumerWidget {
     this.text,
     this.size, {
     this.color,
+    this.textAlign = TextAlign.center,
     super.key,
   });
   final String text;
   final double size;
   final Color? color;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +42,7 @@ class MyText extends ConsumerWidget {
       child: Text(
         text,
         style: TextStyle(fontSize: size, color: color),
-        textAlign: TextAlign.left,
+        textAlign: textAlign,
       ),
     );
   }

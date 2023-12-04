@@ -12,9 +12,10 @@ class ChapterWidget extends ConsumerWidget {
     required this.title,
     required this.navigateTo,
   });
-  final String imagePath;
   final String title;
+  final String imagePath;
   final Widget navigateTo;
+  // TODO: possibly implemented:
   final int? totalStep;
   final int? currentStep;
 

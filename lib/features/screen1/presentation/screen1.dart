@@ -3,7 +3,7 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
-import 'package:collocation_dictionary/features/topics/topic_screen.dart';
+import 'package:collocation_dictionary/features/topics/topics_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +31,7 @@ class Screen1 extends ConsumerWidget {
                     onPressed: () {
                       myNavigate(
                         context,
-                        screen: TopicScreen(
+                        screen: TopicsScreen(
                           cartoonVoicText: 'Hi Cookie bar',
                           cartoonImagePath: Assets.images.beanStalk.path,
                           topicName: 'Pronoun',
@@ -47,7 +47,7 @@ class Screen1 extends ConsumerWidget {
                     onPressed: () {
                       myNavigate(
                         context,
-                        screen: TopicScreen(
+                        screen: TopicsScreen(
                           cartoonVoicText: 'How are you? dek bar',
                           cartoonImagePath: Assets.images.dragon.path,
                           topicName: 'Noun',

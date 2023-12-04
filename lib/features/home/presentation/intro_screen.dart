@@ -14,7 +14,8 @@ final introScreenPageController = StateProvider<PageController>((ref) {
 List<Widget> introAppScreens = [
   const WelcomeScreen(),
   const PurposeScreen(),
-  const EnglishLevelScreen()
+  const TimeSpentScreen(),
+  const EnglishLevelScreen(),
 ];
 
 class WelcomeScreen extends ConsumerWidget {
@@ -32,13 +33,13 @@ class WelcomeScreen extends ConsumerWidget {
           CircleAvatar(
               backgroundColor: Colors.transparent,
               radius: MediaQuery.of(context).size.width / 3,
-              child: Image.asset(Assets.images.beanStalk.path,
-                  fit: BoxFit.cover)),
+              child:
+                  Image.asset(Assets.images.beanStalk.path, fit: BoxFit.cover)),
           gapH32,
-          const MyText('Welcome to English Collocations', 29),
+          const MyText('ขอต้อนรับสู่ English Collocation', 29),
           gapH16,
           MyText(
-            'We hope this app will help you learn English systematically and enjoyably',
+            'เราหวังว่าแอ็พของเรา  จะช่วยให้คุณเรียนภาษาอังกฤษได้อย่างสนุกและเป็นระบบ',
             18,
             color: Colors.grey.shade700,
           ),
@@ -51,13 +52,13 @@ class WelcomeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('Next')),
+                child: const Text('หน้าถัดไป')),
           ),
           gapH16,
           SizedBox(
             width: MediaQuery.of(context).size.width - 32,
             child: GradientButtonFb4(
-              text: 'Start learning immediately',
+              text: 'เริ่มเรียนทันที',
               onPressed: () {
                 myNavigate(context, screen: const HomeScreen());
               },
@@ -71,7 +72,6 @@ class WelcomeScreen extends ConsumerWidget {
 
 class PurposeScreen extends ConsumerWidget {
   const PurposeScreen({super.key});
-  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -87,7 +87,7 @@ class PurposeScreen extends ConsumerWidget {
               radius: MediaQuery.of(context).size.width / 3,
               child: Image.asset(Assets.images.target.path)),
           gapH32,
-          const MyText('What do you want from this app?', 29),
+          const MyText('เป้าหมายของคุณในการใช้งานแอ็พนี้คืออะไร', 29),
           gapH32,
           SizedBox(
             width: MediaQuery.of(context).size.width - 32,
@@ -97,7 +97,7 @@ class PurposeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('Support study')),
+                child: const Text('เพื่อสนับสนุนการศึกษา')),
           ),
           gapH16,
           SizedBox(
@@ -108,19 +108,19 @@ class PurposeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('For jobs')),
+                child: const Text('เพื่อการทำงาน')),
           ),
-          // gapH32,
-          // SizedBox(
-          //   width: MediaQuery.of(context).size.width - 32,
-          //   child: GradientButtonFb4(
-          //       onPressed: () {
-          //         ref.read(introScreenPageController).nextPage(
-          //             duration: const Duration(milliseconds: 500),
-          //             curve: Curves.easeIn);
-          //       },
-          //       text: 'Next'),
-          // ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('อื่นๆ')),
+          ),
         ],
       ),
     ));
@@ -144,50 +144,129 @@ class EnglishLevelScreen extends ConsumerWidget {
                 radius: MediaQuery.of(context).size.width / 3,
                 child: Image.asset(Assets.images.enLevels.path)),
             gapH32,
-            const MyText('What is your English level?', 29),
+            const MyText('ภาษาอังกฤษของคุณอยู่ที่ระดับไหน', 29),
             gapH32,
             SizedBox(
               width: MediaQuery.of(context).size.width - 32,
               child: ElevatedButton(
-                  onPressed: () {}, child: const Text('Know nothing')),
-            ),
-            gapH16,
-            SizedBox(
-              width: MediaQuery.of(context).size.width - 32,
-              child: ElevatedButton(
-                  onPressed: () {}, child: const Text('Know something')),
-            ),
-            gapH16,
-            SizedBox(
-              width: MediaQuery.of(context).size.width - 32,
-              child: ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Know vocabs and grammars')),
-            ),
-            gapH16,
-            SizedBox(
-              width: MediaQuery.of(context).size.width - 32,
-              child: ElevatedButton(
-                  onPressed: () {
-                    ref.read(introScreenPageController).nextPage(
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeIn);
-                  },
-                  child: const Text('Just review (Advanced)')),
-            ),
-            gapH16,
-            SizedBox(
-              width: MediaQuery.of(context).size.width - 32,
-              child: GradientButtonFb4(
-                  text: 'Start learning immediately',
                   onPressed: () {
                     myNavigate(context, screen: const HomeScreen());
-                  }),
+                  },
+                  child: const Text('ไม่รู้เลย')),
             ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {
+                    myNavigate(context, screen: const HomeScreen());
+                  },
+                  child: const Text('อ่านออกเขียนได้บ้าง')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {
+                    myNavigate(context, screen: const HomeScreen());
+                  },
+                  child: const Text('รู้คำศัพท์และไวยากรณ์ (ปานกลาง)')),
+            ),
+            gapH16,
+            SizedBox(
+              width: MediaQuery.of(context).size.width - 32,
+              child: ElevatedButton(
+                  onPressed: () {
+                    myNavigate(context, screen: const HomeScreen());
+                  },
+                  child: const Text('แค่ทบทวน (ขั้นสูง)')),
+            ),
+            gapH16,
+            GradientButtonFb4(
+                text: 'เริ่มเรียนเลย!',
+                onPressed: () {
+                  myNavigate(context, screen: const HomeScreen());
+                }),
           ],
         ),
       ),
     );
+  }
+}
+
+class TimeSpentScreen extends ConsumerWidget {
+  const TimeSpentScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: MediaQuery.of(context).size.width / 3,
+              child:
+                  Image.asset(Assets.images.clock.path, fit: BoxFit.cover)),
+          gapH32,
+          // const MyText('ในแต่ละวัน คุณคิดว่าคุณสามารถเรียนได้นานแค่ไหน', 29),
+          // gapH16,
+          MyText(
+            'ในแต่ละวัน คุณคิดว่าคุณสามารถเรียนได้อย่างน้อยนานแค่ไหน',
+            18,
+            color: Colors.grey.shade700,
+          ),
+          gapH48,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('5 นาที')),
+          ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('15 นาที')),
+          ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('30 นาที')),
+          ),
+          gapH16,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 32,
+            child: ElevatedButton(
+                onPressed: () {
+                  ref.read(introScreenPageController).nextPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeIn);
+                },
+                child: const Text('มากกว่า 30 นาที')),
+          ),
+        
+        ],
+      ),
+    ));
   }
 }
 

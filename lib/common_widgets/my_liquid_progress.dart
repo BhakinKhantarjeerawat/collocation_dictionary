@@ -45,8 +45,8 @@ class MyLiquidCircularProgress extends StatelessWidget {
           borderColor: Colors.transparent,
           borderWidth: 5.0,
           direction: Axis
-              .horizontal, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
-          center: const Text("Loading..."),
+              .vertical, // The direction the liquid moves (Axis.vertical = bottom to top, Axis.horizontal = left to right). Defaults to Axis.vertical.
+          center: const Text("hardcoded"),
         ));
   }
 }

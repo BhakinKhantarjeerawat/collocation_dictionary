@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
+import 'package:collocation_dictionary/common_widgets/my_liquid_progress.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
@@ -7,8 +8,8 @@ import 'package:collocation_dictionary/features/topics/chapter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TopicScreen extends ConsumerStatefulWidget {
-  const TopicScreen(
+class TopicsScreen extends ConsumerStatefulWidget {
+  const TopicsScreen(
       {super.key,
       required this.cartoonVoicText,
       required this.cartoonImagePath,
@@ -20,10 +21,10 @@ class TopicScreen extends ConsumerStatefulWidget {
   final List<ChapterWidget> chapterList;
 
   @override
-  ConsumerState<TopicScreen> createState() => _TopicScreenState();
+  ConsumerState<TopicsScreen> createState() => _TopicsScreenState();
 }
 
-class _TopicScreenState extends ConsumerState<TopicScreen> {
+class _TopicsScreenState extends ConsumerState<TopicsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +33,8 @@ class _TopicScreenState extends ConsumerState<TopicScreen> {
           child: GestureDetector(
             onDoubleTap: () =>
                 ref.read(ttsProvider).speak(widget.cartoonVoicText),
-            child: CircleAvatar(
-                radius: 50, child: Image.asset(widget.cartoonImagePath)),
+            child: const CircleAvatar(
+                radius: 50, child: MyLiquidCircularProgress()),
           ),
         ),
         body: CustomScrollView(
