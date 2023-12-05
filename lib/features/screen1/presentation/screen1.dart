@@ -26,22 +26,6 @@ class Screen1 extends ConsumerWidget {
                 children: [
                   gapH64,
                   Screen1TopicWidget(
-                    assetPath: Assets.images.beanStalk.path,
-                    text: 'Pronoun',
-                    onPressed: () {
-                      myNavigate(
-                        context,
-                        screen: TopicsScreen(
-                          cartoonVoicText: 'Hi Cookie bar',
-                          cartoonImagePath: Assets.images.beanStalk.path,
-                          topicName: 'Pronoun',
-                          chapterList: pronounChaptersList,
-                        ),
-                      );
-                    },
-                  ),
-                  gapH16,
-                  Screen1TopicWidget(
                     assetPath: Assets.images.clock.path,
                     text: 'Noun',
                     onPressed: () {
@@ -52,6 +36,22 @@ class Screen1 extends ConsumerWidget {
                           cartoonImagePath: Assets.images.dragon.path,
                           topicName: 'Noun',
                           chapterList: nounChaptersList,
+                        ),
+                      );
+                    },
+                  ),
+                  gapH16,
+                  Screen1TopicWidget(
+                    assetPath: Assets.images.beanStalk.path,
+                    text: 'Pronoun',
+                    onPressed: () {
+                      myNavigate(
+                        context,
+                        screen: TopicsScreen(
+                          cartoonVoicText: 'Hi Cookie bar',
+                          cartoonImagePath: Assets.images.beanStalk.path,
+                          topicName: 'Pronoun',
+                          chapterList: pronounChaptersList,
                         ),
                       );
                     },

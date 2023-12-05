@@ -35,6 +35,7 @@ class _TestCardState extends ConsumerState<TestCard> {
             height: 300,
             width: 150,
             decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(50)),
               border: Border.all(width: 10, color: Colors.green),
             ),
@@ -42,6 +43,7 @@ class _TestCardState extends ConsumerState<TestCard> {
             child: const Center(child: Text('Front'))),
         back: Container(
             decoration: BoxDecoration(
+              color: Colors.white,
               borderRadius: const BorderRadius.all(Radius.circular(50)),
               image: DecorationImage(
                   image: AssetImage(Assets.images.beanStalk.path)),

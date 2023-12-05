@@ -36,6 +36,13 @@ class $AssetsImagesGen {
   AssetGenImage get catBlackAndWhite =>
       const AssetGenImage('assets/images/cat_black_and_white.png');
 
+  /// File path: assets/images/check.png
+  AssetGenImage get check => const AssetGenImage('assets/images/check.png');
+
+  /// File path: assets/images/check_grey.png
+  AssetGenImage get checkGrey =>
+      const AssetGenImage('assets/images/check_grey.png');
+
   /// File path: assets/images/clipboard.png
   AssetGenImage get clipboard =>
       const AssetGenImage('assets/images/clipboard.png');
@@ -72,6 +79,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/intro.png
   AssetGenImage get intro => const AssetGenImage('assets/images/intro.png');
+
+  /// File path: assets/images/large_image.png
+  AssetGenImage get largeImage =>
+      const AssetGenImage('assets/images/large_image.png');
 
   /// File path: assets/images/list.png
   AssetGenImage get list => const AssetGenImage('assets/images/list.png');
@@ -142,6 +153,8 @@ class $AssetsImagesGen {
         bulb,
         cat,
         catBlackAndWhite,
+        check,
+        checkGrey,
         clipboard,
         clock,
         document,
@@ -153,6 +166,7 @@ class $AssetsImagesGen {
         happiness,
         hen,
         intro,
+        largeImage,
         list,
         night,
         oven,

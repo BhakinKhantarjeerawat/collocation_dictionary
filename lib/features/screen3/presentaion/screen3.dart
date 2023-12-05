@@ -1,4 +1,5 @@
 import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
+import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -13,10 +14,10 @@ class Screen3 extends ConsumerWidget {
           // scaleEnabled: false,
           child: Stack(
             children: [
-              Image.asset('assets/images/large_image.png'),
+              Image.asset(Assets.images.largeImage.path),
               Positioned(
                   top: 610,
-                  left: 250,
+                  left: 270,
                   // right: 0,
                   // bottom: 0,
                   child: Opacity(
@@ -24,13 +25,12 @@ class Screen3 extends ConsumerWidget {
                       child: Tooltip(
                         decoration:
                             const BoxDecoration(color: Colors.blueAccent),
-                        message: 'Tower|ทาว เอ่อ|หอคอย',
+                        message: 'ทาว เอ่อ|หอคอย',
                         child: ElevatedButton(
                             onPressed: () {
-                              ref.read(ttsProvider).speak(
-                                  'This is the tower I might visit one day.');
+                              ref.read(ttsProvider).speak('tower');
                             },
-                            child: const Text('asdf')),
+                            child: const Text('Tower')),
                       ))),
             ],
           )),
