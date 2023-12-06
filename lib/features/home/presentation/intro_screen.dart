@@ -45,6 +45,7 @@ class WelcomeScreen extends ConsumerWidget {
           ),
           gapH48,
           SizedBox(
+            height: 52,
             width: MediaQuery.of(context).size.width - 32,
             child: ElevatedButton(
                 onPressed: () {
@@ -52,7 +53,7 @@ class WelcomeScreen extends ConsumerWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeIn);
                 },
-                child: const Text('หน้าถัดไป')),
+                child: const MyText('หน้าถัดไป', 16)),
           ),
           gapH16,
           SizedBox(
@@ -209,8 +210,7 @@ class TimeSpentScreen extends ConsumerWidget {
           CircleAvatar(
               backgroundColor: Colors.transparent,
               radius: MediaQuery.of(context).size.width / 3,
-              child:
-                  Image.asset(Assets.images.clock.path, fit: BoxFit.cover)),
+              child: Image.asset(Assets.images.clock.path, fit: BoxFit.cover)),
           gapH32,
           // const MyText('ในแต่ละวัน คุณคิดว่าคุณสามารถเรียนได้นานแค่ไหน', 29),
           // gapH16,
@@ -263,7 +263,6 @@ class TimeSpentScreen extends ConsumerWidget {
                 },
                 child: const Text('มากกว่า 30 นาที')),
           ),
-        
         ],
       ),
     ));

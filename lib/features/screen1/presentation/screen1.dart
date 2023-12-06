@@ -1,6 +1,8 @@
 import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/exercises_template/choice_question_widget.dart';
+import 'package:collocation_dictionary/features/topics/chapter_page_view.dart';
 import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/topics_screen.dart';
@@ -18,6 +20,8 @@ class Screen1 extends ConsumerWidget {
       body: Stack(
         children: [
           const _TopGradient(),
+          // Image.asset(Assets.images.light.path,
+          //     height: double.infinity, fit: BoxFit.cover),
           SizedBox(
             height: double.infinity,
             child: SingleChildScrollView(
@@ -63,7 +67,11 @@ class Screen1 extends ConsumerWidget {
                       Screen1TopicWidget(
                         assetPath: Assets.images.document.path,
                         text: 'Third Lesson',
-                        onPressed: () {},
+                        onPressed: () {
+                          myNavigate(context,
+                              screen: ChapterPageView(
+                                  chapters: choiceQuestionList));
+                        },
                       ),
                       Screen1TopicWidget(
                         assetPath: Assets.images.oven.path,

@@ -32,6 +32,8 @@ class _MainAppState extends State<MainApp> {
           useMaterial3: true,
           scaffoldBackgroundColor: Colors.white,
           fontFamily: FontFamily.comfortaa),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
       home: const IntroScreen(),
     );
   }

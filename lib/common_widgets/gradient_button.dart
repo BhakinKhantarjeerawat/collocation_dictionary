@@ -13,7 +13,7 @@ class GradientButtonFb4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: 55,
       width: MediaQuery.of(context).size.width - 32,
       child: DecoratedBox(
           decoration: BoxDecoration(
@@ -35,7 +35,7 @@ class GradientButtonFb4 extends StatelessWidget {
               onPressed: onPressed,
               child: Text(
                 text,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ))),
     );
   }

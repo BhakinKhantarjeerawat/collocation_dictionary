@@ -20,6 +20,9 @@ class $AssetsImagesGen {
   AssetGenImage get beanStalk =>
       const AssetGenImage('assets/images/bean_stalk.png');
 
+  /// File path: assets/images/bird.png
+  AssetGenImage get bird => const AssetGenImage('assets/images/bird.png');
+
   /// File path: assets/images/bo.png
   AssetGenImage get bo => const AssetGenImage('assets/images/bo.png');
 
@@ -50,6 +53,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/clock.png
   AssetGenImage get clock => const AssetGenImage('assets/images/clock.png');
 
+  /// File path: assets/images/dark.png
+  AssetGenImage get dark => const AssetGenImage('assets/images/dark.png');
+
   /// File path: assets/images/document-.png
   AssetGenImage get document =>
       const AssetGenImage('assets/images/document-.png');
@@ -77,12 +83,18 @@ class $AssetsImagesGen {
   /// File path: assets/images/hen.png
   AssetGenImage get hen => const AssetGenImage('assets/images/hen.png');
 
+  /// File path: assets/images/home.png
+  AssetGenImage get home => const AssetGenImage('assets/images/home.png');
+
   /// File path: assets/images/intro.png
   AssetGenImage get intro => const AssetGenImage('assets/images/intro.png');
 
   /// File path: assets/images/large_image.png
   AssetGenImage get largeImage =>
       const AssetGenImage('assets/images/large_image.png');
+
+  /// File path: assets/images/light.png
+  AssetGenImage get light => const AssetGenImage('assets/images/light.png');
 
   /// File path: assets/images/list.png
   AssetGenImage get list => const AssetGenImage('assets/images/list.png');
@@ -112,6 +124,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/rt.png
   AssetGenImage get rt => const AssetGenImage('assets/images/rt.png');
 
+  /// File path: assets/images/sit.png
+  AssetGenImage get sit => const AssetGenImage('assets/images/sit.png');
+
   /// File path: assets/images/soy.png
   AssetGenImage get soy => const AssetGenImage('assets/images/soy.png');
 
@@ -127,6 +142,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/treasure.png
   AssetGenImage get treasure =>
       const AssetGenImage('assets/images/treasure.png');
+
+  /// File path: assets/images/walk.png
+  AssetGenImage get walk => const AssetGenImage('assets/images/walk.png');
+
+  /// File path: assets/images/watch.png
+  AssetGenImage get watch => const AssetGenImage('assets/images/watch.png');
 
   /// File path: assets/images/water_fall.png
   AssetGenImage get waterFall =>
@@ -148,6 +169,7 @@ class $AssetsImagesGen {
   List<AssetGenImage> get values => [
         appintro,
         beanStalk,
+        bird,
         bo,
         bt,
         bulb,
@@ -157,6 +179,7 @@ class $AssetsImagesGen {
         checkGrey,
         clipboard,
         clock,
+        dark,
         document,
         dragon,
         enLevels,
@@ -165,8 +188,10 @@ class $AssetsImagesGen {
         gt,
         happiness,
         hen,
+        home,
         intro,
         largeImage,
+        light,
         list,
         night,
         oven,
@@ -176,11 +201,14 @@ class $AssetsImagesGen {
         ro,
         road,
         rt,
+        sit,
         soy,
         stream,
         summary,
         target,
         treasure,
+        walk,
+        watch,
         waterFall,
         wind,
         wood,
