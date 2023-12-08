@@ -1,6 +1,4 @@
 import 'package:collocation_dictionary/common_test_widgets/light_dark_widget.dart';
-import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
-import 'package:collocation_dictionary/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
