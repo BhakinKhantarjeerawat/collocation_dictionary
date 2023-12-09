@@ -62,7 +62,6 @@ class _ChoiceQuestionWidgetState extends ConsumerState<ChoiceQuestionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // final selectedAnswer = ref.watch(selectedAnswerProvider);
     return Scaffold(
       body: Center(
         child: Column(
@@ -90,23 +89,6 @@ class _ChoiceQuestionWidgetState extends ConsumerState<ChoiceQuestionWidget> {
                   text: widget.choices[2],
                 ),
               gapH16,
-
-
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height / 2,
-              //   child: ListView.builder(
-              //     itemCount: widget.choices.length,
-              //     itemBuilder: (context, index) {
-              //       // return widget.choices[index];
-              //       return Column(
-              //         children: [
-              //           MyBorderButton1(text: widget.choices[index]),
-              //           const SizedBox(height: 16),
-              //         ],
-              //       );
-              //     },
-              //   ),
-              // )
             ]),
           ],
         ),

@@ -1,9 +1,6 @@
-import 'package:collocation_dictionary/common_widgets/display_bottom_sheet.dart';
-import 'package:collocation_dictionary/common_widgets/my_border_button1.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/features/exercises_template/choice_question_widget.dart';
 import 'package:collocation_dictionary/features/topics/chapter_page_view.dart';
-import 'package:collocation_dictionary/providers/chapter_pageview_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,7 +14,6 @@ class Noun0 extends ConsumerStatefulWidget {
 class _Noun0State extends ConsumerState<Noun0> {
   @override
   Widget build(BuildContext context) {
-    final activePage = ref.watch(activePageProvider);
     return Scaffold(
       body: Column(
         children: [
@@ -38,9 +34,10 @@ class _Noun0State extends ConsumerState<Noun0> {
                 height: MediaQuery.of(context).size.height * 0.1,
                 width: double.infinity,
                 child: Container(
-                  decoration: const BoxDecoration(gradient: LinearGradient(
-                      colors: [Color(0xff53E88B), Color(0xff15BE77)])),
-                  child: const Center(child: MyText('ตรวจคำตอบ', 16)),
+                  decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [Color(0xff53E88B), Color(0xff15BE77)])),
+                  child: const Center(child: MyText('ตรวจคำตอบs', 16)),
                 )),
           ),
         ],

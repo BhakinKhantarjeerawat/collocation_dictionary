@@ -95,13 +95,13 @@ class Screen1 extends ConsumerWidget {
                   gapH16,
                   Screen1TopicWidget(
                     assetPath: Assets.images.soy.path,
-                    text: 'First Lesson',
+                    text: 'Fifth Lesson',
                     onPressed: () {},
                   ),
                   gapH16,
                   Screen1TopicWidget(
                     assetPath: Assets.images.wind.path,
-                    text: 'Second',
+                    text: 'Seventh',
                     onPressed: () {},
                   ),
                 ],

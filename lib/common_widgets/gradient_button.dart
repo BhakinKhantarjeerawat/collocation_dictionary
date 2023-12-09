@@ -19,7 +19,8 @@ class GradientButtonFb4 extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadius),
               gradient: const LinearGradient(
-                  colors: [Color(0xff53E88B), Color(0xff15BE77)])),
+                  colors: [Color(0xff53E88B), Color(0xff15BE77)])
+                  ),
           child: ElevatedButton(
               style: ButtonStyle(
                   elevation: MaterialStateProperty.all(0),
