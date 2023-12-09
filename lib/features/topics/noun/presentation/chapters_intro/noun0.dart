@@ -1,5 +1,4 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
-import 'package:collocation_dictionary/features/exercises_template/choice_question_widget.dart';
 import 'package:collocation_dictionary/features/topics/chapter_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,7 +19,7 @@ class _Noun0State extends ConsumerState<Noun0> {
           SizedBox(
               height: MediaQuery.of(context).size.height * 0.9,
               width: MediaQuery.of(context).size.width,
-              child: ChapterPageView(chapters: choiceQuestionList)),
+              child: const ChapterPageView(chapters: [])),
           GestureDetector(
             onTap: () {
               // displayBottomSheet(
