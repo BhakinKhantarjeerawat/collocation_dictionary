@@ -2,9 +2,9 @@ import 'package:collocation_dictionary/common_methods.dart/my_navigate.dart';
 import 'package:collocation_dictionary/common_test_widgets/test_grid_view_quiz.dart';
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/new_exercise/choice_question_screen.dart';
 import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters_data.dart';
-import 'package:collocation_dictionary/features/topics/noun/presentation/chapters_intro/noun0.dart';
 import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/topics_screen.dart';
 import 'package:collocation_dictionary/gen/assets.gen.dart';
@@ -69,10 +69,7 @@ class Screen1 extends ConsumerWidget {
                         assetPath: Assets.images.document.path,
                         text: 'Third Lesson',
                         onPressed: () {
-                          // myNavigate(context,
-                          //     screen: ChapterPageView(
-                          //         chapters: choiceQuestionList));
-                          myNavigate(context, screen: const Noun0());
+                          myNavigate(context, screen: const HomeScreen());
                         },
                       ),
                       Screen1TopicWidget(
@@ -89,6 +86,7 @@ class Screen1 extends ConsumerWidget {
                     assetPath: Assets.images.ramen.path,
                     text: 'New choice question screen',
                     onPressed: () {
+                      ref.read(scoreProvider.notifier).state = 0;
                       myNavigate(context, screen: const ExcercisePageView1());
                     },
                   ),

@@ -18,11 +18,6 @@ class SelectLessonsScreen extends ConsumerWidget {
                     screen: ExercisesScreen(lesson: pronounLesson1)),
                 leading: const CircleAvatar(),
                 title: const Text('pronoun (ประธาน)')),
-     
-            // ListTile(
-            //     onTap: () => myNavigate(context, screen: MyPageView(lesson:pronounLesson1)),
-            //     leading: const CircleAvatar(),
-            //     title: const Text('pronoun (กรรม)')),
           ],
         ));
   }

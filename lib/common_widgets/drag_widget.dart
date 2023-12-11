@@ -55,7 +55,7 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.grey.shade100,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,8 +69,8 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
             if (widget.translation != null)
               Tooltip(
                 message: 'He is a teacher.',
-                onTriggered: ()
-                => ref.read(ttsProvider).speak('He is a teacher'),
+                onTriggered: () =>
+                    ref.read(ttsProvider).speak('He is a teacher'),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Row(
@@ -103,10 +103,13 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    Expanded(child: Tooltip(
-                      message: 'He is our teacher!',
-                      onTriggered: ()=>ref.read(ttsProvider).speak('He is the teacher!'),
-                      child: Image.asset('assets/images/happiness.png'))),
+                    Expanded(
+                        child: Tooltip(
+                            message: 'He is our teacher!',
+                            onTriggered: () => ref
+                                .read(ttsProvider)
+                                .speak('He is the teacher!'),
+                            child: Image.asset('assets/images/happiness.png'))),
                     Bubble(
                       nipWidth: 30,
                       nipHeight: 10,
@@ -134,14 +137,18 @@ class _DragWidgetState extends ConsumerState<DragWidget> {
                           height: 90,
                           child: Center(child: MyText(widget.shownWord, 34))),
                       MyDragTarget(
-                          staticWord: widget.shownWord, answer: widget.answer, activePage: widget.activePage),
+                          staticWord: widget.shownWord,
+                          answer: widget.answer,
+                          activePage: widget.activePage),
                     ],
                   )
                 : Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyDragTarget(
-                          staticWord: widget.shownWord, answer: widget.answer, activePage: widget.activePage),
+                          staticWord: widget.shownWord,
+                          answer: widget.answer,
+                          activePage: widget.activePage),
                       SizedBox(
                           height: 90,
                           child: Center(child: MyText(widget.shownWord, 34)))
@@ -218,14 +225,14 @@ class _MyDragTargetState extends ConsumerState<MyDragTarget> {
       },
       onWillAccept: (data) {
         if (data != widget.answer) {
-          ref
-              .read(wrongAnswerProvider.notifier)
-              .state
-              .add(widget.activePage);
+          ref.read(wrongAnswerProvider.notifier).state.add(widget.activePage);
           debugPrint(ref.watch(wrongAnswerProvider).toString());
           setState(() {
             ref.read(ttsProvider).speak('wrong!');
-            showSnackBarGlobal(context, 'wrong!', );
+            showSnackBarGlobal(
+              context,
+              'wrong!',
+            );
           });
         }
         return data == widget.answer;

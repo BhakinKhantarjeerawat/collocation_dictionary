@@ -1,5 +1,6 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/new_exercise/choice_question_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,16 +22,18 @@ class FourChoicesQuestion extends ConsumerStatefulWidget {
 }
 
 class _FourChoicesQuestionState extends ConsumerState<FourChoicesQuestion> {
-  // int selectedAnswer = 0;
+  @override
+  void initState() {
+    // ref.read(ttsProvider).speak(widget.question);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
       child: Container(
-        // margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
         padding: const EdgeInsets.symmetric(vertical: 8),
-        color: Colors.grey.shade200,
         child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,12 +98,11 @@ class FourAnswerItem1 extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-              decoration: const BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
-              // color: Colors.blue,
               height: (MediaQuery.of(context).size.width / 2) - 84,
               width: MediaQuery.of(context).size.width / 2.5,
               child: Image.asset(
@@ -110,8 +112,9 @@ class FourAnswerItem1 extends ConsumerWidget {
           Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                  color:
-                      selectedAnswer == 1 ? Colors.greenAccent : Colors.white,
+                  color: selectedAnswer == 1
+                      ? Colors.greenAccent
+                      : Colors.grey.shade200,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16))),
@@ -142,12 +145,11 @@ class FourAnswerItem2 extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-              decoration: const BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
-              // color: Colors.blue,
               height: (MediaQuery.of(context).size.width / 2) - 84,
               width: MediaQuery.of(context).size.width / 2.5,
               child: Image.asset(
@@ -157,8 +159,9 @@ class FourAnswerItem2 extends ConsumerWidget {
           Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                  color:
-                      selectedAnswer == 2 ? Colors.greenAccent : Colors.white,
+                  color: selectedAnswer == 2
+                      ? Colors.greenAccent
+                      : Colors.grey.shade200,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16))),
@@ -189,12 +192,11 @@ class FourAnswerItem3 extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-              decoration: const BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
-              // color: Colors.blue,
               height: (MediaQuery.of(context).size.width / 2) - 84,
               width: MediaQuery.of(context).size.width / 2.5,
               child: Image.asset(
@@ -204,8 +206,9 @@ class FourAnswerItem3 extends ConsumerWidget {
           Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                  color:
-                      selectedAnswer == 3 ? Colors.greenAccent : Colors.white,
+                  color: selectedAnswer == 3
+                      ? Colors.greenAccent
+                      : Colors.grey.shade200,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16))),
@@ -236,12 +239,11 @@ class FourAnswerItem4 extends ConsumerWidget {
       child: Column(
         children: [
           Container(
-              decoration: const BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(16),
                       topRight: Radius.circular(16))),
-              // color: Colors.blue,
               height: (MediaQuery.of(context).size.width / 2) - 84,
               width: MediaQuery.of(context).size.width / 2.5,
               child: Image.asset(
@@ -251,8 +253,9 @@ class FourAnswerItem4 extends ConsumerWidget {
           Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                  color:
-                      selectedAnswer == 4 ? Colors.greenAccent : Colors.white,
+                  color: selectedAnswer == 4
+                      ? Colors.greenAccent
+                      : Colors.grey.shade200,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(16),
                       bottomRight: Radius.circular(16))),

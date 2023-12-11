@@ -16,6 +16,9 @@ class $AssetsImagesGen {
   AssetGenImage get appintro =>
       const AssetGenImage('assets/images/appintro.png');
 
+  /// File path: assets/images/beach.png
+  AssetGenImage get beach => const AssetGenImage('assets/images/beach.png');
+
   /// File path: assets/images/bean_stalk.png
   AssetGenImage get beanStalk =>
       const AssetGenImage('assets/images/bean_stalk.png');
@@ -35,10 +38,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/cat.png
   AssetGenImage get cat => const AssetGenImage('assets/images/cat.png');
 
-  /// File path: assets/images/cat_black_and_white.png
-  AssetGenImage get catBlackAndWhite =>
-      const AssetGenImage('assets/images/cat_black_and_white.png');
-
   /// File path: assets/images/check.png
   AssetGenImage get check => const AssetGenImage('assets/images/check.png');
 
@@ -53,6 +52,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/clock.png
   AssetGenImage get clock => const AssetGenImage('assets/images/clock.png');
 
+  /// File path: assets/images/clouds.png
+  AssetGenImage get clouds => const AssetGenImage('assets/images/clouds.png');
+
   /// File path: assets/images/dark.png
   AssetGenImage get dark => const AssetGenImage('assets/images/dark.png');
 
@@ -60,12 +62,18 @@ class $AssetsImagesGen {
   AssetGenImage get document =>
       const AssetGenImage('assets/images/document-.png');
 
+  /// File path: assets/images/dog.png
+  AssetGenImage get dog => const AssetGenImage('assets/images/dog.png');
+
   /// File path: assets/images/dragon.png
   AssetGenImage get dragon => const AssetGenImage('assets/images/dragon.png');
 
   /// File path: assets/images/en_levels.png
   AssetGenImage get enLevels =>
       const AssetGenImage('assets/images/en_levels.png');
+
+  /// File path: assets/images/fish.png
+  AssetGenImage get fish => const AssetGenImage('assets/images/fish.png');
 
   /// File path: assets/images/forest.png
   AssetGenImage get forest => const AssetGenImage('assets/images/forest.png');
@@ -99,6 +107,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/list.png
   AssetGenImage get list => const AssetGenImage('assets/images/list.png');
 
+  /// File path: assets/images/mountain.png
+  AssetGenImage get mountain =>
+      const AssetGenImage('assets/images/mountain.png');
+
   /// File path: assets/images/night.png
   AssetGenImage get night => const AssetGenImage('assets/images/night.png');
 
@@ -114,6 +126,9 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/ramen.png
   AssetGenImage get ramen => const AssetGenImage('assets/images/ramen.png');
+
+  /// File path: assets/images/river.png
+  AssetGenImage get river => const AssetGenImage('assets/images/river.png');
 
   /// File path: assets/images/ro.png
   AssetGenImage get ro => const AssetGenImage('assets/images/ro.png');
@@ -168,21 +183,24 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         appintro,
+        beach,
         beanStalk,
         bird,
         bo,
         bt,
         bulb,
         cat,
-        catBlackAndWhite,
         check,
         checkGrey,
         clipboard,
         clock,
+        clouds,
         dark,
         document,
+        dog,
         dragon,
         enLevels,
+        fish,
         forest,
         go,
         gt,
@@ -193,11 +211,13 @@ class $AssetsImagesGen {
         largeImage,
         light,
         list,
+        mountain,
         night,
         oven,
         presentation,
         quiz,
         ramen,
+        river,
         ro,
         road,
         rt,

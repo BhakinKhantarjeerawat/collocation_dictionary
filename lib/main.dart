@@ -34,6 +34,7 @@ class _MainAppState extends State<MainApp> {
           fontFamily: FontFamily.comfortaa),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.light,
+      // home: ExercisesScreen(lesson: pronounLesson1),
       home: const IntroScreen(),
     );
   }

@@ -1,19 +1,21 @@
 import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
+import 'package:collocation_dictionary/features/home/data/tts_provider.dart';
 import 'package:collocation_dictionary/features/new_exercise/choice_question_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ThreeChoicesQuestion extends ConsumerStatefulWidget {
-  const ThreeChoicesQuestion({
-    super.key,
-    required this.question,
-    required this.correctAnswer,
-    required this.choices,
-  });
+  const ThreeChoicesQuestion(
+      {super.key,
+      required this.question,
+      required this.correctAnswer,
+      required this.choices,
+      this.imagePath});
   final String question;
   final String correctAnswer;
   final List<String> choices;
+  final String? imagePath;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -21,16 +23,19 @@ class ThreeChoicesQuestion extends ConsumerStatefulWidget {
 }
 
 class _ThreeChoicesQuestionState extends ConsumerState<ThreeChoicesQuestion> {
-  // int selectedAnswer = 0;
+  @override
+  void initState() {
+    // ref.read(ttsProvider).speak(widget.question);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-          child: Center(
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          gapH64,
-          MyText(widget.question, 29),
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          SizedBox(height: 210, child: Image.asset(widget.imagePath!)),
+          MyText(widget.question, 34),
           gapH32,
           ThreeChoicesQuestion1(text: widget.choices[0]),
           gapH16,
@@ -38,7 +43,7 @@ class _ThreeChoicesQuestionState extends ConsumerState<ThreeChoicesQuestion> {
           gapH16,
           ThreeChoicesQuestion3(text: widget.choices[2]),
         ]),
-      )),
+      ),
     );
   }
 }
@@ -71,9 +76,6 @@ class ThreeChoicesQuestion1 extends ConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               margin: const EdgeInsets.all(8.0),
               child: ListTile(
-                // leading: isPressed
-                //     ? Image.asset(Assets.images.check.path)
-                //     : Image.asset(Assets.images.checkGrey.path),
                 title: Text(text,
                     maxLines: 2,
                     style: const TextStyle(fontSize: 18),
@@ -112,9 +114,6 @@ class ThreeChoicesQuestion2 extends ConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               margin: const EdgeInsets.all(8.0),
               child: ListTile(
-                // leading: isPressed
-                //     ? Image.asset(Assets.images.check.path)
-                //     : Image.asset(Assets.images.checkGrey.path),
                 title: Text(text,
                     maxLines: 2,
                     style: const TextStyle(fontSize: 18),
@@ -126,11 +125,9 @@ class ThreeChoicesQuestion2 extends ConsumerWidget {
   }
 }
 
-
 class ThreeChoicesQuestion3 extends ConsumerWidget {
   const ThreeChoicesQuestion3({super.key, required this.text});
   final String text;
-
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
