@@ -33,16 +33,16 @@ final scoreProvider = StateProvider<int>((ref) {
 List<Exercise> exercisesList = [
   Exercise(
       imagePath: Assets.images.dog.path,
-      exerciseType: ExerciseType.blankFill,
-      question: 'my',
-      correctAnswer: "daughter",
-      choices: ["daughter", "son", "sister"]),
-  Exercise(
-      imagePath: Assets.images.dog.path,
       exerciseType: ExerciseType.threeAnswers,
       question: 'dog',
       correctAnswer: "หมา",
       choices: ["หมา", "แมว", "ถูกทุกข้อ"]),
+  Exercise(
+      imagePath: Assets.images.dog.path,
+      exerciseType: ExerciseType.blankFill,
+      question: 'my',
+      correctAnswer: "daughter",
+      choices: ["daughter", "son", "sister"]),
   // * ----------------
   // Exercise(
   //   exerciseType: ExerciseType.exerciseScreen,
@@ -149,7 +149,10 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
                     child: Row(
                       children: [
                         IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.close)),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(Icons.close)),
                         gapH8,
                         Expanded(
                             child: MyStepProgress(
@@ -254,7 +257,7 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
                   )
                 : GestureDetector(
                     onTap: () {
-                      displayBottomSheet1(context,
+                      displayBottomSheet(context,
                           ref: ref,
                           pageController: _pageController,
                           correctAnswer:

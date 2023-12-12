@@ -4,6 +4,7 @@ import 'package:collocation_dictionary/common_widgets/my_text.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:collocation_dictionary/features/home/presentation/home_screen.dart';
 import 'package:collocation_dictionary/features/new_exercise/choice_question_screen.dart';
+import 'package:collocation_dictionary/features/new_exercise/my_speech_to_text.dart';
 import 'package:collocation_dictionary/features/topics/noun/data/noun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/pronoun/data/pronoun_chapters_data.dart';
 import 'package:collocation_dictionary/features/topics/topics_screen.dart';
@@ -93,8 +94,10 @@ class Screen1 extends ConsumerWidget {
                   gapH16,
                   Screen1TopicWidget(
                     assetPath: Assets.images.soy.path,
-                    text: 'Fifth Lesson',
-                    onPressed: () {},
+                    text: 'Speach to text',
+                    onPressed: () {
+                           myNavigate(context, screen: const SpeechSampleApp());
+                    },
                   ),
                   gapH16,
                   Screen1TopicWidget(

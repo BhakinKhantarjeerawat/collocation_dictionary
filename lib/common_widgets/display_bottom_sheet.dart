@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collocation_dictionary/constants/app_sizes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Future displayBottomSheet1(
+Future displayBottomSheet(
   BuildContext context, {
   required String correctAnswer,
   required String selectedAnswer,
@@ -65,7 +65,8 @@ Future displayBottomSheet1(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeIn);
                           },
-                          child: const MyText('ถัดไป', 18, color: Colors.green)),
+                          child:
+                              const MyText('ถัดไป', 18, color: Colors.green)),
                 ),
                 gapH16,
               ],
