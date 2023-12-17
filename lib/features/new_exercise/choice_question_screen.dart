@@ -22,8 +22,12 @@ enum ExerciseType {
   blankFill
 }
 
-final selectedAnswer1 = StateProvider<int>((ref) {
+final selectedChoice = StateProvider<int>((ref) {
   return 0;
+});
+
+final selectedAnswer1 = StateProvider<String>((ref) {
+  return "";
 });
 
 final scoreProvider = StateProvider<int>((ref) {
@@ -32,17 +36,17 @@ final scoreProvider = StateProvider<int>((ref) {
 
 List<Exercise> exercisesList = [
   Exercise(
-      imagePath: Assets.images.dog.path,
       exerciseType: ExerciseType.threeAnswers,
+      imagePath: Assets.images.dog.path,
       question: 'dog',
       correctAnswer: "หมา",
       choices: ["หมา", "แมว", "ถูกทุกข้อ"]),
-  Exercise(
-      imagePath: Assets.images.dog.path,
-      exerciseType: ExerciseType.blankFill,
-      question: 'my',
-      correctAnswer: "daughter",
-      choices: ["daughter", "son", "sister"]),
+  // Exercise(
+  //     imagePath: Assets.images.dog.path,
+  //     exerciseType: ExerciseType.blankFill,
+  //     question: 'my',
+  //     correctAnswer: "daughter",
+  //     choices: ["daughter", "son", "sister"]),
   // * ----------------
   // Exercise(
   //   exerciseType: ExerciseType.exerciseScreen,
@@ -54,8 +58,8 @@ List<Exercise> exercisesList = [
   //   imagePath: 'assets/images/happiness.png',
   // ),
   Exercise(
-      imagePath: Assets.images.cat.path,
       exerciseType: ExerciseType.threeAnswers,
+      imagePath: Assets.images.cat.path,
       question: 'cat',
       correctAnswer: "แมว",
       choices: ["หมา", "แมว", "ถูกทุกข้อ"]),
@@ -67,16 +71,16 @@ List<Exercise> exercisesList = [
       Assets.images.fish.path,
     ],
     exerciseType: ExerciseType.fourAnswers,
-    question: "bird",
-    correctAnswer: "นก",
-    choices: ["หมา", "แมว", "นก", "ปลา"],
+    question: "นก",
+    correctAnswer: "bird",
+    choices: ["dog", "cat", "bird", "fish"],
   ),
   Exercise(
     imagePath: Assets.images.bird.path,
     exerciseType: ExerciseType.threeAnswers,
     question: 'bird',
-    correctAnswer: "ไม่ถูกสักข้อ",
-    choices: ["หมา", "แมว", "ไม่ถูกสักข้อ"],
+    correctAnswer: "นก",
+    choices: ["หมา", "แมว", "นก"],
   ),
   Exercise(
       frontCover: Assets.images.light.path,
@@ -133,7 +137,7 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
 
   @override
   Widget build(BuildContext context) {
-    final selectedAnswerProvider = ref.watch(selectedAnswer1) - 1;
+    final selectedAnswer = ref.watch(selectedAnswer1);
     return Scaffold(
         backgroundColor: activePage == exercisesList.length - 1
             ? Colors.black
@@ -169,7 +173,6 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
                 height: activePage == exercisesList.length - 1
                     ? MediaQuery.of(context).size.height * 0.9
                     : MediaQuery.of(context).size.height * 0.8,
-                // height: MediaQuery.of(context).size.height * 0.8,
                 child: PageView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: exercisesList.length,
@@ -246,10 +249,9 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
                                   exercisesList[activePage].correctAnswer);
                       }
                     })),
-            selectedAnswerProvider == -1
+            selectedAnswer == ""
                 ? Container(
                     color: Colors.transparent,
-                    // height: MediaQuery.of(context).size.height * 0.1,
                     height: activePage == exercisesList.length - 1
                         ? MediaQuery.of(context).size.height * 0.0
                         : MediaQuery.of(context).size.height * 0.1,
@@ -262,10 +264,10 @@ class _ExcercisePageView1State extends ConsumerState<ExcercisePageView1> {
                           pageController: _pageController,
                           correctAnswer:
                               exercisesList[activePage].correctAnswer,
-                          selectedAnswer: exercisesList[activePage]
-                              .choices[selectedAnswerProvider],
+                          selectedAnswer: selectedAnswer,
                           nextChapter: exercisesList[activePage].nextChapter);
-                      ref.read(selectedAnswer1.notifier).state = 0;
+                      ref.read(selectedChoice.notifier).state = 0;
+                      ref.read(selectedAnswer1.notifier).state = "";
                     },
                     child: Container(
                         decoration: const BoxDecoration(
