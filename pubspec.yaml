@@ -81,7 +81,7 @@ flutter:
 flutter_native_splash:
   android: true
   ios: true
-  background_image: "assets/images/appintro.png"
+  background_image: "assets/images/beach.png"
   ios_content_mode: center
 
  
